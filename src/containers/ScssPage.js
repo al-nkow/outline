@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow } from 'react-syntax-highlighter/styles/prism';
+import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
 
 const Head = styled.h1`
