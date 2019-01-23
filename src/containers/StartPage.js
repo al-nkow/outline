@@ -22,6 +22,7 @@ class StartPage extends Component {
   render () {
     return (
       <Wrap>
+        <StyledLink to="/questions">JS частые вопросы</StyledLink>
         <StyledLink to="/common">Общие вопросы</StyledLink>
         <StyledLink to="/async">Асинхронное программирование</StyledLink>
         <StyledLink to="/tasks">Задачи на собеседовании</StyledLink>
@@ -35,6 +36,7 @@ class StartPage extends Component {
         <StyledLink to="/worker">Web workers</StyledLink>
         <StyledLink to="/server">Server</StyledLink>
         <StyledLink to="/api">API</StyledLink>
+        <StyledLink to="/node">Node</StyledLink>
       </Wrap>
     );
   }

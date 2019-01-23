@@ -17,3 +17,7 @@ export const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
   font-size: 14px;
   padding: 20px!important;
 `;
+
+export const Block = styled.div`
+  margin-bottom: 40px;
+`;

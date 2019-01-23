@@ -1,27 +1,9 @@
 import React, { Component } from 'react';
-// import { Route } from 'react-router-dom';
-import styled from 'styled-components';
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
-
-const Head = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
-`;
-
-const SubHead = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-  border-radius: 4px;
-  margin: 20px 0!important;
-  font-size: 14px;
-  padding: 20px!important;
-`;
+import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
+import Important from '../components/Important';
 
 const code1 = `var animal = {
   eats: true;
@@ -56,6 +38,29 @@ var b = new a();
 // b.__proto__ === a.prototype // true 
 `;
 
+const code2 = `Rabbit.prototype.__proto__ = Animal.prototype;
+// Этот способ не работает в IE!
+
+Rabbit.prototype = Object.create(Animal.prototype);
+
+// В prototype по умолчанию всегда находится свойство constructor
+// указывающее на функцию-конструктор:
+// Rabbit.prototype.constructor === Rabbit
+// При замене через Object.create это свойство надо сохранить!
+
+Rabbit.prototype.constructor = Rabbit
+`;
+
+const code3 = `// расширяем Rabbit методами Animal
+class Rabbit extends Animal { 
+  walk() {
+    super.walk();
+    // в объекте super хранятся методы родителя
+    alert('...');
+  }
+}
+`;
+
 
 class ProtoPage extends Component {
 
@@ -73,6 +78,21 @@ class ProtoPage extends Component {
           {code1}
         </StyledSyntaxHighlighter>
 
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {code2}
+        </StyledSyntaxHighlighter>
+
+        <Important>
+          В прототип <b>класса</b> нельзя записать обычное значение, только функцию!<br/>
+          User.prtotype.key = 'value' - нельзя! только функции (методы)
+        </Important>
+        <Important>
+          У класса методы не перечислимые
+        </Important>
+
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {code3}
+        </StyledSyntaxHighlighter>
       </div>
     );
   }

@@ -136,6 +136,13 @@ class JsPage extends Component {
         <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
           {code3}
         </StyledSyntaxHighlighter>
+
+        <SubHead>DRY KISS</SubHead>
+        <p>
+          DRY - don't repeat yourself<br/>
+          KISS - keep it simple stupud<br/>
+          You ain't gonna need it - Вам это не понадобится<br/>
+        </p>
       </div>
     );
   }

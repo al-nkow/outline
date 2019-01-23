@@ -1,26 +1,8 @@
 import React, { Component } from 'react';
 import Important from '../components/Important';
-import styled from 'styled-components';
+import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-
-const Head = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
-`;
-
-const SubHead = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-  border-radius: 4px;
-  margin: 20px 0!important;
-  font-size: 14px;
-  padding: 20px!important;
-`;
 
 const code1 = `// Объявляем:
 :root {
@@ -61,83 +43,234 @@ class CommonQuestions extends Component {
       <div>
         <Head>Общие вопросы</Head>
 
-        <SubHead>HTML5 новые теги</SubHead>
-        <p>
-          1. Header, footer, section, article, video, audio, progress, nav, meter, time,
-          aside, canvas<br/>
-          2. Новые значения атрибута <b>type</b><br/>
-          3. Новые атрибуты элементов: dragable, contenteditable, hidden, contextmenu, data-*, dropzone,
-          role, spellcheck[8] ...
-        </p>
-        <SubHead>Преимущества</SubHead>
-        <p>
-          Поисковые системы лучше индексируют сайт. Лучше работают речевые браузеры (для слепых).
-          Всё предназначено для роботов, интерпретирующих код.
-        </p>
-        <p><b>Header</b> - определяет шапку сайта или раздела</p>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code2}
-        </StyledSyntaxHighlighter>
+        <Block>
+          <SubHead>Семантическая разметка</SubHead>
+          <p>
+            Это контент с грамотно поставленными HTML тегами форматирования.
+            Семантика - использование тегов в соответствии со смыслом (правила форматирования)
+          </p>
+        </Block>
+        <Block>
+          <SubHead>Оптимизация</SubHead>
+          <p>
+            Как увеличить скорость загрузки?<br/>
+            1. Уменьшить количество HTTP запросов: CSS спрайты, inline картинки
+            (url-схема data:), конкатенация файлов (объединение в один)<br/>
+            2. CSS файлы - в начало страницы<br/>
+            3. Javascript файлы - в конце страницы<br/>
+            4. Минификация<br/>
+            5. Поддомены для параллельно скачивания<br/>
+            6. Используйте кэш браузера<br/>
+            7. CDN для загрузки популярных библиотек<br/>
+            8. Оптимизация изображений<br/>
+            9. GZIP сжатие
+          </p>
+          <Important>
+            Одновременно с одного домена браузер может качать только 2 ресурса
+          </Important>
+        </Block>
+        <Block>
+          <SubHead>Стандарты и комитеты по стандартам ISO, IEC</SubHead>
+          <p>Требования, позволяют оценить качество</p>
+        </Block>
+        <Block>
+          <SubHead>DOCTYPE</SubHead>
+          <p>
+            Для указания типа документа. Какую версию HTML использовать (их 8 штук -
+            XHTML строгий синтаксис, фреймы и так далее). Некоторые браузеры поддерживают XHTML5 и
+            обрабатывают такую разметку по-другому.
+          </p>
+        </Block>
+        <Block>
+          <SubHead>HTML5</SubHead>
+          <p>
+            Это открытая платформа, предназначенная для создания веб приложений, использующих
+            аудио, видео, графику, анимацию и так далее.
+          </p>
+          <p>
+            1. Новые теги: header, footer, section, article, video, audio, progress, nav, meter, time,
+            aside, canvas<br/>
+            2. Новые значения атрибута <b>type</b><br/>
+            3. Новые атрибуты элементов: dragable, contenteditable, hidden, contextmenu, data-*, dropzone,
+            role, spellcheck[8] ...
+          </p>
+          <Important>
+            GET - данные отправляются в URL<br/>
+            POST - передает данные в запросе (пользователь их не видит)
+          </Important>
+        </Block>
+        <Block>
+          <SubHead>Преимущества новых тегов HTML5</SubHead>
+          <p>
+            Поисковые системы лучше индексируют сайт. Лучше работают речевые браузеры (для слепых).
+            Всё предназначено для роботов, интерпретирующих код.
+          </p>
+          <p><b>Header</b> - определяет шапку сайта или раздела</p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code2}
+          </StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>Арность</SubHead>
+          <p>
+            Это количество операторов функции (количество ее аргументов)
+          </p>
+        </Block>
+        <Block>
+          <SubHead>Feature detection</SubHead>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`// Проверяем конкретную функцию
 
-        <SubHead>CSS переменные</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code1}
-        </StyledSyntaxHighlighter>
+if (window.XMLHttpRequest) {
+  new XMLHttpRequest
+}`}
+</StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>Feature inference</SubHead>
+          <p>
+            Есть одна функция - значит есть и остальные. Например если есть SessionStorage, то
+            значит поддерживается HTML5
+          </p>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`if (document.getElementsByTagName) {
+  element = document.getElementById
+}`}
+</StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>User Agent</SubHead>
+          <p>В user agent содержится информация о браузере</p>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`if (navigator.userAgent.indexOf('MSIE7') > -1) {
+  // do something ...
+}`}
+</StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>JSONP</SubHead>
+          <Important>
+            Работает только в GET!
+          </Important>
+          <p>
+            С помощью JS добавляем в head скрипт
+          </p>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`<script src="/user?id=123"></script>
+// addScript('user?id&callback=onUserData')
+// ответ будет onUserData({name: 'Vasya', age: 30});
+`}
+</StyledSyntaxHighlighter>
+          <p>
+            Браузер его скачивает и тут же выполняет! Сервер обернет ответ в функцию, имя
+            которой мы передали в GET параметре
+          </p>
+        </Block>
+        <Block>
+          <SubHead>Мемоизация</SubHead>
+          <p>
+            Сохранение результатов выполнения функция для предотвращения повторных вычислений.
+            Другими словами - кэширование промежуточного результата. Как пример - рекурсия с
+            сохранением промежуточного результата в какой-то массив или объект.
+          </p>
+        </Block>
+        <Block>
+          <SubHead>События загрузки DOM</SubHead>
+          <p>
+            <b>ready</b> - готово дерево DOM<br/>
+            <b>load</b> - загружено все содержимое, включая изображения
+          </p>
+        </Block>
+        <Block>
+          <SubHead>Получение данных из url</SubHead>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`window.location.href // вся ссылка в виде строки
+window.location.search // строка с параметрами из ссылки ?id=2&name=Petya...
+`}
+</StyledSyntaxHighlighter>
+        </Block>
 
-        <SubHead>POST CSS</SubHead>
-        <p>
-          В чём отличие от препроцессоров?<br/>
-          <b>Препроцессор</b>: монолитный, логика прямо в шаблоне<br/>
-          <b>Post CSS</b>: все функции как плагины, JS трансформирует CSS<br/>
-        </p>
-        <p>
-          Примеры:<br/>
-          <b>autoprefixer</b><br/>
-          <b>cssnext</b> - пишем на CSS4 преобразует в CSS3<br/>
-          <b>data-packer</b> - сначала грузятся стили а только потом картинки (выносит их в отдельный файл)<br/>
-          <b>bem-linter</b>
-        </p>
-        <Important>
-          На PostCSS можно сделать любую фичу которая есть в SASS, но на SASS невозможно сделать большинство фич,
-          которые есть в PostCSS! SASS и SCSS - отличие только в синтаксисе (в SASS отступы а SCSS похож на CSS)
-        </Important>
 
-        <SubHead>Функциональное программирование</SubHead>
-        <p>
-          1. Все функции - чистые. Функции, вызываемые от одних и тех же аргументов всегда возвращают
-          одинаковые значения. Нет обращений к переменным вне функции. Нет побочных эффектов
-          (не меняем ничего вне функции).<br/>
-          2. Функции высшего порядка - это те, которые принимают другую функцию как
-          аргумент или возвращают функцию (например .filter и .map).<br/>
-          3. Переменные неизменяемы (const)
-          4. ...
-        </p>
 
-        <SubHead>Шифрование</SubHead>
-        <p>
-          Обратимое преобразование информации в целях сокрытия её от неавторизованных лиц, с предоставлением
-          авторизованным пользователям доступа к ней. При шифрование обязательно использование ключа!
-          Различают: шифрование данных с помощью открытого ключа, кодировка base64, симметричный шифр,
-          ассиметричный шифр ...
-        </p>
-
-        <SubHead>Сессии</SubHead>
-        <p>
-          Это механизм, позволяющий однозначно идентифицировать браузер и создающий для этого браузера файл на сервере
-          в котором хранятся переменные сеанса.
-        </p>
-        <Important>
-          Переменную можно передать браузеру только в куках или вметсе с POST/GET запросом
-        </Important>
-        <p>
-          К каждой ссылке и каждой форме PHP дописывает идентификатор сессии (к формам добавляется скрытое поле).
-          Чтобы поместить переменную в сессию - достаточно присвоить её элементу массива $_SESSION (PHP)
-        </p>
-        <p>
-          Записать данные в сессию - отправить запрос на сервер! Сессия создается на сервере, а куки хранятся на
-          компьютере пользователя!
-        </p>
-        
+        <Block>
+          <SubHead>CSS переменные</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code1}
+          </StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>POST CSS</SubHead>
+          <p>
+            В чём отличие от препроцессоров?<br/>
+            <b>Препроцессор</b>: монолитный, логика прямо в шаблоне<br/>
+            <b>Post CSS</b>: все функции как плагины, JS трансформирует CSS<br/>
+          </p>
+          <p>
+            Примеры:<br/>
+            <b>autoprefixer</b><br/>
+            <b>cssnext</b> - пишем на CSS4 преобразует в CSS3<br/>
+            <b>data-packer</b> - сначала грузятся стили а только потом картинки (выносит их в отдельный файл)<br/>
+            <b>bem-linter</b>
+          </p>
+          <Important>
+            На PostCSS можно сделать любую фичу которая есть в SASS, но на SASS невозможно сделать большинство фич,
+            которые есть в PostCSS! SASS и SCSS - отличие только в синтаксисе (в SASS отступы а SCSS похож на CSS)
+          </Important>
+        </Block>
+        <Block>
+          <SubHead>Функциональное программирование</SubHead>
+          <p>
+            1. Все функции - чистые. Функции, вызываемые от одних и тех же аргументов всегда возвращают
+            одинаковые значения. Нет обращений к переменным вне функции. Нет побочных эффектов
+            (не меняем ничего вне функции).<br/>
+            2. Функции высшего порядка - это те, которые принимают другую функцию как
+            аргумент или возвращают функцию (например .filter и .map).<br/>
+            3. Переменные неизменяемы (const)
+            4. ...
+          </p>
+        </Block>
+        <Block>
+          <SubHead>Шифрование</SubHead>
+          <p>
+            Обратимое преобразование информации в целях сокрытия её от неавторизованных лиц, с предоставлением
+            авторизованным пользователям доступа к ней. При шифрование обязательно использование ключа!
+            Различают: шифрование данных с помощью открытого ключа, кодировка base64, симметричный шифр,
+            ассиметричный шифр ...
+          </p>
+        </Block>
+        <Block>
+          <SubHead>Сессии</SubHead>
+          <p>
+            Это механизм, позволяющий однозначно идентифицировать браузер и создающий для этого браузера файл на сервере
+            в котором хранятся переменные сеанса.
+          </p>
+          <Important>
+            Переменную можно передать браузеру только в куках или вметсе с POST/GET запросом
+          </Important>
+          <p>
+            К каждой ссылке и каждой форме PHP дописывает идентификатор сессии (к формам добавляется скрытое поле).
+            Чтобы поместить переменную в сессию - достаточно присвоить её элементу массива $_SESSION (PHP)
+          </p>
+          <p>
+            Записать данные в сессию - отправить запрос на сервер! Сессия создается на сервере, а куки хранятся на
+            компьютере пользователя!
+          </p>
+        </Block>
+        <Block>
+          <SubHead>SAME ORIGIN</SubHead>
+          <p>
+            Один источник! Запрещает доступ из одного окна к другому!<br/>
+            Общение окон с разных доменов - <b>postMessage</b> (интерфейс).
+            Получатель ставит обработчик на событие <b>onmessage</b>.
+          </p>
+        </Block>
+        <Block>
+          <SubHead>LERNA</SubHead>
+          <p>
+            Это инструмент, который помогает держать множество пакетов в одном репозитории.
+            Создание симлинков на локальные пакеты.
+          </p>
+        </Block>
       </div>
     );
   }

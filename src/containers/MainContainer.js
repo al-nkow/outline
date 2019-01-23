@@ -14,6 +14,8 @@ import SolidPage from './SolidPage';
 import WorkerPage from './WorkerPage';
 import ServerPage from './ServerPage';
 import ApiPage from './ApiPage';
+import NodePage from './NodePage';
+import QuestionsPage from './Questions';
 
 import styled from 'styled-components';
 
@@ -44,6 +46,8 @@ const AppRouter = () => (
       <Route path="/worker/" component={WorkerPage} />
       <Route path="/server/" component={ServerPage} />
       <Route path="/api/" component={ApiPage} />
+      <Route path="/node" component={NodePage}></Route>
+      <Route path="/questions" component={QuestionsPage}></Route>
     </Container>
   </Wrap>
 );
