@@ -189,9 +189,6 @@ window.location.search // строка с параметрами из ссылк
 `}
 </StyledSyntaxHighlighter>
         </Block>
-
-
-
         <Block>
           <SubHead>CSS переменные</SubHead>
           <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
@@ -271,6 +268,105 @@ window.location.search // строка с параметрами из ссылк
             Создание симлинков на локальные пакеты.
           </p>
         </Block>
+        <Block>
+          <SubHead>FORM DATA (IE10+)</SubHead>
+          <p>
+            Встроенный объект, который кодирует формы для отправки на сервер.
+            C помощью этого объекта также можно отправлять файлы на сервер.
+          </p>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`var data = new FormData(document.forms.person); // document.forms - все формы
+
+data.append('newname', 'Max');
+var xhr = new XMLHttpRequest();
+xhr.open('POST', '/url');
+`}
+</StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>THIS</SubHead>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`// 1. Вызов функции
+function f() {
+  console.log(this === window); // true
+}
+f();
+`}
+</StyledSyntaxHighlighter>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`// 2. В конструкторе this указывает на создаваемый объект
+function f() {
+  this.x = 5;
+  console.log(this === window); // false
+}
+var o = new f();
+console.log(o.x === 5); // true
+`}
+</StyledSyntaxHighlighter>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`// 3. В методе объекта this - ссылка на объект!
+var o = {
+  f: function() {
+    return this;
+  }
+}
+console.log(o.f() === o); // true
+`}
+</StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>USE STRICT</SubHead>
+          <p>
+            Строгий режим. Современный стандарт. Для того, чтобы можно было использовать
+            современный JS.
+          </p>
+        </Block>
+        <Block>
+          <SubHead>AJAX</SubHead>
+          <p>
+            <b>ajax</b> - отправил запрос - получил результат<br/>
+            <b>comet</b> - непрерывный канал, по которому приходят данные (чат, аукцион, онлайн редактор)
+          </p>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`var xhr = new XMLHttpRequest();
+xhr.open('GET', 'phones.json', false); // false - асинхронно, true - синхронно
+// phones.json - это url
+xhr.send;
+if (xhr.status != 200) {
+  alert(error);
+} else {
+  alert(xhr.responseText);
+};
+`}
+</StyledSyntaxHighlighter>
+          <Important>
+            У GET запросов нет тела! У POST основные данные передаются в теле запроса!
+          </Important>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`var xhr = new XMLHttpRequest();
+xhr.open('GET', 'phones.json', true);
+xhr.send;
+xhr.onreadystatechange = function() {
+  if (xhr.readyState != 4) return;
+  if (xhr.status != 200) {
+    // error
+  } else {
+    // result
+  };
+};
+`}
+</StyledSyntaxHighlighter>
+        </Block>
+
+
+
+
+
+
+
+
+
+
       </div>
     );
   }
