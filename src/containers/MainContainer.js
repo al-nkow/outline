@@ -16,6 +16,8 @@ import ServerPage from './ServerPage';
 import ApiPage from './ApiPage';
 import NodePage from './NodePage';
 import QuestionsPage from './Questions';
+import EsNewPage from './EsNew';
+import HelperPage from './HelperPage';
 
 import styled from 'styled-components';
 
@@ -48,6 +50,8 @@ const AppRouter = () => (
       <Route path="/api/" component={ApiPage} />
       <Route path="/node" component={NodePage}></Route>
       <Route path="/questions" component={QuestionsPage}></Route>
+      <Route path="/esnew" component={EsNewPage}></Route>
+      <Route path="/helper" component={HelperPage}></Route>
     </Container>
   </Wrap>
 );

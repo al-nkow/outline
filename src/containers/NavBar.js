@@ -10,6 +10,7 @@ const Wrap = styled.div`
   right: 0;
   padding: 10px;
   background: #cccccc;
+  z-index: 100;
 `;
 
 const Inner = styled.div`
