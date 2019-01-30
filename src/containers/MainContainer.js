@@ -18,7 +18,7 @@ import NodePage from './NodePage';
 import QuestionsPage from './Questions';
 import EsNewPage from './EsNew';
 import HelperPage from './HelperPage';
-import FuncProg from './FuncProg';
+import CanvasPage from './CanvasPage';
 
 import styled from 'styled-components';
 
@@ -53,6 +53,7 @@ const AppRouter = () => (
       <Route path="/questions" component={QuestionsPage}></Route>
       <Route path="/esnew" component={EsNewPage}></Route>
       <Route path="/helper" component={HelperPage}></Route>
+      <Route path="/canvas" component={CanvasPage}></Route>
     </Container>
   </Wrap>
 );

@@ -39,6 +39,7 @@ class StartPage extends Component {
         <StyledLink to="/node">Node</StyledLink>
         <StyledLink to="/esnew">ES 2015</StyledLink>
         <StyledLink to="/helper">Вопросы на собеседовании</StyledLink>
+        <StyledLink to="/canvas">SVG Canvas D3</StyledLink>
       </Wrap>
     );
   }

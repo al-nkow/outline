@@ -75,9 +75,6 @@ class QuestionsPage extends Component {
 
         <Block>
           <SubHead>Возможности</SubHead>
-          <p>
-            paragraph
-          </p>
           <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
             {code1}
           </StyledSyntaxHighlighter>
