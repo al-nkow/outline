@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import StartPage from './StartPage';
 import AsyncPage from './AsyncPage';
 import TasksPage from './TasksPage';
@@ -18,6 +18,7 @@ import NodePage from './NodePage';
 import QuestionsPage from './Questions';
 import EsNewPage from './EsNew';
 import HelperPage from './HelperPage';
+import FuncProg from './FuncProg';
 
 import styled from 'styled-components';
 

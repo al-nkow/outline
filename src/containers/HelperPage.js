@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
-import Important from '../components/Important';
+// import Important from '../components/Important';
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
 const code1 = `var array = [elem0, elem1, elem2, elem3];

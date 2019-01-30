@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
-import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
+import { Head, StyledSyntaxHighlighter } from '../components/shared';
 import Important from '../components/Important';
 
 const code1 = `var animal = {

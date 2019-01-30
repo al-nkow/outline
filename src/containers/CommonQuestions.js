@@ -63,7 +63,13 @@ class CommonQuestions extends Component {
             6. Используйте кэш браузера<br/>
             7. CDN для загрузки популярных библиотек<br/>
             8. Оптимизация изображений<br/>
-            9. GZIP сжатие
+            9. GZIP сжатие<br/>
+            10. Чтобы заставить браузер загружать болше ресурсов ПАРАЛЛЕЛЬНО
+            можно отдавать их с разных доменов<br/>
+            11. Предзагрузка ресурсов: &lt;link rel="prefetch" href="webfont.woff"&gt;<br/>
+            12. Отказаться от изображений для retina дисплеев<br/>
+            13. Использовать baseline jpeg (сначала грузится размытое изображение)<br/>
+            14. Как можно меньше изображений
           </p>
           <Important>
             Одновременно с одного домена браузер может качать только 2 ресурса
@@ -76,23 +82,32 @@ class CommonQuestions extends Component {
         <Block>
           <SubHead>DOCTYPE</SubHead>
           <p>
+            Нужен для того, чтобы браузер правильно отображал разметку документа.
             Для указания типа документа. Какую версию HTML использовать (их 8 штук -
             XHTML строгий синтаксис, фреймы и так далее). Некоторые браузеры поддерживают XHTML5 и
-            обрабатывают такую разметку по-другому.
+            обрабатывают такую разметку по-другому.<br/>
+            <b>Quirks Mode</b> - неопределенное состояние (некорректное отображение страниц, написанных
+            для старых браузеров)<br/>
+            <b>Standarts Mode</b> - соответствует стандартам
           </p>
         </Block>
         <Block>
           <SubHead>HTML5</SubHead>
           <p>
             Это открытая платформа, предназначенная для создания веб приложений, использующих
-            аудио, видео, графику, анимацию и так далее.
+            аудио, видео, графику, анимацию и так далее. Это не продолжатель разметки гипертекста,
+            а новая платформа для создания веб приложений, использующих аудио, видео, анимацию,
+            графику и многое другое.
           </p>
           <p>
             1. Новые теги: header, footer, section, article, video, audio, progress, nav, meter, time,
             aside, canvas<br/>
             2. Новые значения атрибута <b>type</b><br/>
             3. Новые атрибуты элементов: dragable, contenteditable, hidden, contextmenu, data-*, dropzone,
-            role, spellcheck[8] ...
+            role, spellcheck[8] ...<br/>
+            4. Автономная работа, благодаря кэшу HTML5<br/>
+            5. Можно рисовать, используя CANVAS API<br/>
+            6. 3D графика
           </p>
           <Important>
             GET - данные отправляются в URL<br/>
@@ -110,6 +125,47 @@ class CommonQuestions extends Component {
             {code2}
           </StyledSyntaxHighlighter>
         </Block>
+        <Block>
+          <SubHead>Cookies</SubHead>
+          <p>
+            Небольшой текстовый файл, в который записываются данные посещенного сайта:
+            логин, пароль, индивидуальные настройки, статистика посещений. Каждый раз при
+            посещении сайта, браузер отправляет серверу сайта наш куки для идентификации.
+          </p>
+        </Block>
+        <Block>
+          <SubHead>Session Storage</SubHead>
+          <p>
+            Это более функциональная альтернатива cookies. Можно хранить неограниченные объемы
+            информации, информация доступна без подключения к интернету, данные не отсылаются
+            при каждом запросе страницы, удобно сохранять и извлекать информацию. Более безопасны.<br/>
+            <b>Local Storage</b> - хранит неограниченно<br/>
+            <b>Session Storage</b> - хранит данные только в течение пользовательской сессии.<br/>
+            Если один сайт открыт в нескольких вкладках браузера - сторадж у него будет один
+            и доступен в каждой вкладке.
+          </p>
+        </Block>
+        <Block>
+          <SubHead>Undeclarated и Undefined</SubHead>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`var obj = {
+  prop1: 'value1',
+  prop2: 'value2'
+}
+
+console.log(obj.test); // undefined - не вызовет ошибки
+console.log(test); // undeclarated - Uncaught ReferenceError: test is not defined
+`}
+</StyledSyntaxHighlighter>
+        </Block>
+
+
+
+
+
+
+
+
         <Block>
           <SubHead>Арность</SubHead>
           <p>
@@ -145,33 +201,27 @@ if (window.XMLHttpRequest) {
 }`}
 </StyledSyntaxHighlighter>
         </Block>
-        <SubHead>
+        <Block>
           <SubHead>Graceful degradation</SubHead>
           <p>
             Правильное отображение контента при отключенном Javascript, аккуратное отображение
             без CSS3 и отключенных изображениях
           </p>
-        </SubHead>
-        <SubHead>
+        </Block>
+        <Block>
           <SubHead>Progressive enhancement</SubHead>
           <p>
             Прогрессивное улучшение - от простого к сложному. HTML - CSS - CSS3 - JS
           </p>
-        </SubHead>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </Block>
+        <Block>
+          <SubHead>FUOC</SubHead>
+          <p>
+            В IE (вспышка) отображение страницы сперва без стилей. Решение проблемы -
+            обернуть всю страницу в блок, который скрыть и только когда вся страница
+            загрузилась со стилями - показать этот блок с помощью JS (.show());
+          </p>
+        </Block>
         <Block>
           <SubHead>User Agent</SubHead>
           <p>В user agent содержится информация о браузере</p>
@@ -285,6 +335,9 @@ window.location.search // строка с параметрами из ссылк
             аргумент или возвращают функцию (например .filter и .map).<br/>
             3. Переменные неизменяемы (const)
             4. ...
+          </p>
+          <p>
+            Вопросы: монады, каррирование, линзы, чистые функции
           </p>
         </Block>
         <Block>
