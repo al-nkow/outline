@@ -37,6 +37,8 @@ class StartPage extends Component {
         <StyledLink to="/server">Server</StyledLink>
         <StyledLink to="/api">API</StyledLink>
         <StyledLink to="/node">Node</StyledLink>
+        <StyledLink to="/esnew">ES 2015</StyledLink>
+        <StyledLink to="/helper">Вопросы на собеседовании</StyledLink>
       </Wrap>
     );
   }
