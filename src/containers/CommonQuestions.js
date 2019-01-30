@@ -118,12 +118,19 @@ class CommonQuestions extends Component {
         </Block>
         <Block>
           <SubHead>Feature detection</SubHead>
+          <p>
+            Определение возможностей браузера. Пример использования - Modernizer
+          </p>
 <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
 {`// Проверяем конкретную функцию
 
 if (window.XMLHttpRequest) {
   new XMLHttpRequest
-}`}
+}
+
+// Или в html:
+<video src="images/...">Your browser not ...</video>
+`}
 </StyledSyntaxHighlighter>
         </Block>
         <Block>
@@ -138,6 +145,33 @@ if (window.XMLHttpRequest) {
 }`}
 </StyledSyntaxHighlighter>
         </Block>
+        <SubHead>
+          <SubHead>Graceful degradation</SubHead>
+          <p>
+            Правильное отображение контента при отключенном Javascript, аккуратное отображение
+            без CSS3 и отключенных изображениях
+          </p>
+        </SubHead>
+        <SubHead>
+          <SubHead>Progressive enhancement</SubHead>
+          <p>
+            Прогрессивное улучшение - от простого к сложному. HTML - CSS - CSS3 - JS
+          </p>
+        </SubHead>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <Block>
           <SubHead>User Agent</SubHead>
           <p>В user agent содержится информация о браузере</p>
@@ -173,9 +207,33 @@ if (window.XMLHttpRequest) {
             Другими словами - кэширование промежуточного результата. Как пример - рекурсия с
             сохранением промежуточного результата в какой-то массив или объект.
           </p>
+          <p>
+            Кэширование результатов функции - перед выполнением функции - проверка. если результат есть в
+            кэше - значит функция уже выполнялась и берем результат оттуда. Если результата нет в кэше - выполняем.
+          </p>
         </Block>
         <Block>
           <SubHead>События загрузки DOM</SubHead>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`// DOMContentLoaded – означает, что все DOM-элементы разметки уже созданы, можно их искать,
+// вешать обработчики, создавать интерфейс, но при этом, возможно, ещё
+// не догрузились какие-то картинки или стили
+
+// load – страница и все ресурсы загружены, используется редко, обычно
+// нет нужды ждать этого момента
+
+<script>
+  function ready() {
+    alert( 'DOM готов' );
+    alert( "Размеры картинки: " + img.offsetWidth + "x" + img.offsetHeight );
+  }
+
+  document.addEventListener("DOMContentLoaded", ready);
+</script>
+
+<img id="img" src="https://js.cx/clipart/yozhik.jpg?speed=1">
+`}
+</StyledSyntaxHighlighter>
           <p>
             <b>ready</b> - готово дерево DOM<br/>
             <b>load</b> - загружено все содержимое, включая изображения
@@ -183,6 +241,9 @@ if (window.XMLHttpRequest) {
         </Block>
         <Block>
           <SubHead>Получение данных из url</SubHead>
+          <p>
+            <b>window.location</b> - получает/устанавливает параметры url
+          </p>
 <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
 {`window.location.href // вся ссылка в виде строки
 window.location.search // строка с параметрами из ссылки ?id=2&name=Petya...
@@ -254,8 +315,10 @@ window.location.search // строка с параметрами из ссылк
           </p>
         </Block>
         <Block>
-          <SubHead>SAME ORIGIN</SubHead>
+          <SubHead>SAME ORIGIN POLICY</SubHead>
           <p>
+            Ограничивает доступ окон и фреймов друг к другу. Два URL считаются имеющими один источник,
+            если у них одинаковый протокол! Из разных источников - запрещено!
             Один источник! Запрещает доступ из одного окна к другому!<br/>
             Общение окон с разных доменов - <b>postMessage</b> (интерфейс).
             Получатель ставит обработчик на событие <b>onmessage</b>.
@@ -304,6 +367,20 @@ console.log(o.x === 5); // true
 `}
 </StyledSyntaxHighlighter>
 <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`function f () {
+  this.x = 5;
+}
+
+f();
+
+console.log(x); // 5
+
+var s = new f();
+
+console.log(s.x,  window.x); // 5 5
+`}
+</StyledSyntaxHighlighter>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
 {`// 3. В методе объекта this - ссылка на объект!
 var o = {
   f: function() {
@@ -324,6 +401,8 @@ console.log(o.f() === o); // true
         <Block>
           <SubHead>AJAX</SubHead>
           <p>
+            Осуществляет запрос к серверу без перезагрузки страницы<br/>
+            По умолчанию запрос к серверу осуществляется методом <b>GET</b><br/>
             <b>ajax</b> - отправил запрос - получил результат<br/>
             <b>comet</b> - непрерывный канал, по которому приходят данные (чат, аукцион, онлайн редактор)
           </p>
@@ -357,6 +436,49 @@ xhr.onreadystatechange = function() {
 `}
 </StyledSyntaxHighlighter>
         </Block>
+        <Block>
+          <SubHead>Анонимные функции</SubHead>
+          <p>
+            Это функции без объявления, без названия, самовызывающиеся функции. Используются, например, чтобы
+            изолировать фрагмент кода от воздействия извне. Анонимную функцию можно создать и присвоить переменной
+            как обычное значение.
+          </p>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`(function() {
+  ...
+})();
+
+var foo = function() { ... };
+foo();
+`}
+</StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>HOST OBJECTS</SubHead>
+          <p>
+            Или объекты среды - объекты JS, предоставляемые окружением, в котором исполняется код (то есть браузером).
+            Например: <b>Event, HtmlElement, XMLHttpRequest</b>. Они могут меняться по усмотрению разработчиков браузеров.
+            В разных браузерах их реализации могут отличаться.
+          </p>
+          <p>Function.prototype.bind - используется для привязки контекста</p>
+          <Important>
+            <b>Нативные объекты</b> JS - строго соответствуют спецификации (Object, Array, Function, String).
+          </Important>
+        </Block>
+        <Block>
+          <SubHead>HOISTING</SubHead>
+          <p>
+            Поднятие объявления переменной в начало области видимости (присваивание значений не поднимается).
+          </p>
+        </Block>
+        <Block>
+          <SubHead>CHAINING</SubHead>
+          <p>Цепочки вызовов методов</p>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`...siblings('li').append('<a></a>').show().hide();
+`}
+</StyledSyntaxHighlighter>
+        </Block>
 
 
 
@@ -364,9 +486,20 @@ xhr.onreadystatechange = function() {
 
 
 
+        <Block>
+          <SubHead>UNCATEGORIZED</SubHead>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`a == b; // преобразовывает типы (если отличаются) и сравнивает
+a === b // строгое равенство
 
+~ // побитовое НЕ - заменяет каждый бит на противоположный
 
+.end(); // возвращает предыдущий набор элементов
 
+deffered // объекты, хранят состояние задачи (выполнено, еще не выполнено, выполнено с ошибкой)
+`}
+</StyledSyntaxHighlighter>
+        </Block>
       </div>
     );
   }
