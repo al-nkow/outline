@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
-import { Head, StyledSyntaxHighlighter } from '../components/shared';
+import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 import Important from '../components/Important';
 
 const code1 = `var animal = {
@@ -69,6 +69,10 @@ class ProtoPage extends Component {
       <div>
         <Head>Наследование</Head>
         <p>
+          Объект наследует свойства и методы из своего прототипа, а если их нет - то из
+          свойства и метода родителя.
+        </p>
+        <p>
           При создании объекта через <b>new</b> в его прототип <b>__proto__</b> записывается
           ссылка из <b>prototype</b> родителя (то есть по сути сам prototype).<br/>
           Свойство <b>prototype</b> указывает <b>__proto__</b> для новых объектов и всё!
@@ -93,6 +97,17 @@ class ProtoPage extends Component {
         <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
           {code3}
         </StyledSyntaxHighlighter>
+
+        <SubHead>Инкапсуляция</SubHead>
+        <p>
+          это изоляция данных внутри экземпляра класса.
+        </p>
+
+        <SubHead>Полиморфизм</SubHead>
+        <p>
+          Это способность объекта использовать методы произвольного класса, который
+          не существует на момент создания базового.
+        </p>
       </div>
     );
   }

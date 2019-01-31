@@ -6,6 +6,10 @@ class NodePage extends Component {
     return (
       <div>
         <Head>NODE.JS</Head>
+        <p>
+          Node.js - это программное средство для выполнения js (на сервере, desktop,
+          notebook, где угодно)
+        </p>
         <SubHead>Как в NODE.js отправлять изображение на сервер?</SubHead>
         <p>
           1. Передача файла из html формы<br/>

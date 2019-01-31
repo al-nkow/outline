@@ -19,6 +19,7 @@ import QuestionsPage from './Questions';
 import EsNewPage from './EsNew';
 import HelperPage from './HelperPage';
 import CanvasPage from './CanvasPage';
+import OwaspPage from './OwaspPage';
 
 import styled from 'styled-components';
 
@@ -54,6 +55,7 @@ const AppRouter = () => (
       <Route path="/esnew" component={EsNewPage}></Route>
       <Route path="/helper" component={HelperPage}></Route>
       <Route path="/canvas" component={CanvasPage}></Route>
+      <Route path="/owasp" component={OwaspPage}></Route>
     </Container>
   </Wrap>
 );

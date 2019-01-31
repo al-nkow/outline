@@ -30,7 +30,7 @@ class StartPage extends Component {
         <StyledLink to="/redux">Redux основы</StyledLink>
         <StyledLink to="/js">Javascript общие вопросы</StyledLink>
         <StyledLink to="/proto">Javascript Наследование</StyledLink>
-        <StyledLink to="/scss">Scss</StyledLink>
+        <StyledLink to="/scss">SCSS SASS LESS STYLUS</StyledLink>
         <StyledLink to="/template">Шаблоны проектирования</StyledLink>
         <StyledLink to="/solid">SOLID</StyledLink>
         <StyledLink to="/worker">Web workers</StyledLink>
@@ -40,6 +40,7 @@ class StartPage extends Component {
         <StyledLink to="/esnew">ES 2015</StyledLink>
         <StyledLink to="/helper">Вопросы на собеседовании</StyledLink>
         <StyledLink to="/canvas">SVG Canvas D3</StyledLink>
+        <StyledLink to="/owasp">OWASP</StyledLink>
       </Wrap>
     );
   }

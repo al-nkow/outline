@@ -62,8 +62,11 @@ class ApiPage extends Component {
 
         <SubHead>Websocket</SubHead>
         <p>
+          Это протокол, предназначенный для обмена сообщениями между браузером и
+          веб-сервером в режиме реального времени (поверх TCP соединения).
           Он позволяет пересылать любые данные, на любой домен, безопасно и почти без
-          лишнего сетевого трафика.
+          лишнего сетевого трафика. Экономит трафик, работает над http. Пересылать
+          можно любые данные, в том числе и файлы!
         </p>
         <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
           {code1}
@@ -216,6 +219,28 @@ class ApiPage extends Component {
         <Important>
           Браузер загружает страницу сверху вниз. Стили (в head), HTML разметка (теги), скрипты (перед закрывающим body)
         </Important>
+
+        <SubHead>REST</SubHead>
+        <p>
+          Это стиль архитектуры программного обеспечения для построения распределенных
+          масштабируемых веб сервисов. REST API - это набор функций к которым можно отправлять
+          запросы и получать ответы.
+        </p>
+        <p>
+          Различная смысловая нагрузка HTTP запросов: GET, POST, PUT, DELETE, CONNECT,
+          HEAD, OPTIONS, PATCH, TRACE, CREATE, READ...
+        </p>
+        <p>
+          Определенные коды ответов: 200 оk, 201 created, 203 not authorized,
+          404 not found, 406 not acceptable, 500 server error
+        </p>
+
+        <SubHead>JSON pure API</SubHead>
+        <p>
+          Использует только один метод для передачи данных - POST для HTTP и GET для WEBSOCKET.
+          Только один код ответа - 200. Передача и ответ независимы. Любой канал связи http/s,
+          websocket, XMPP, telnet, SFTP, SCP, SSH.
+        </p>
       </div>
     );
   }

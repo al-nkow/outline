@@ -1,27 +1,8 @@
 import React, { Component } from 'react';
-// import { Route } from 'react-router-dom';
-import styled from 'styled-components';
-
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
+import Important from '../components/Important';
 
-
-const Head = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
-`;
-
-const SubHead = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-  border-radius: 4px;
-  margin: 20px 0!important;
-  font-size: 14px;
-  padding: 20px!important;
-`;
+import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
 const code1 = `$font-stack: Helvetica, sans-serif;
 body {
@@ -81,52 +62,112 @@ const code8 = `@for $i from 1 through 3 {
 }
 `;
 
+const code9 = `<link rel="stylesheet/less" type="text/css" href="styles.less">
+<script src="less.js" type="text/javascript"></script>
+// less.js - библиотека которая компилирует less на лету (на клиенте)
+`;
+
+const code10 = `$font = 'Helvetica', Arial, sans-serif
+
+body
+  font 20px/40px $font
+  
+width 400px
+margin-left (@width/2)
+
+size(width, height=width)
+.foo
+  size(100px)
+  
+overflow ellipsis
+// ->
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+`;
+
 class ScssPage extends Component {
 
   render () {
     return (
       <div>
-        <Head>SCSS</Head>
+        <Block>
+          <Head>SCSS</Head>
 
-        <SubHead>Переменные</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code1}
-        </StyledSyntaxHighlighter>
+          <SubHead>Переменные</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code1}
+          </StyledSyntaxHighlighter>
 
-        <SubHead>Вложенности</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code2}
-        </StyledSyntaxHighlighter>
+          <SubHead>Вложенности</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code2}
+          </StyledSyntaxHighlighter>
 
-        <SubHead>Фрагменты</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code3}
-        </StyledSyntaxHighlighter>
+          <SubHead>Фрагменты</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code3}
+          </StyledSyntaxHighlighter>
 
-        <SubHead>Миксины</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code4}
-        </StyledSyntaxHighlighter>
+          <SubHead>Миксины</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code4}
+          </StyledSyntaxHighlighter>
 
-        <SubHead>Расширение/Наследование</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code5}
-        </StyledSyntaxHighlighter>
+          <SubHead>Расширение/Наследование</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code5}
+          </StyledSyntaxHighlighter>
 
-        <SubHead>Математические операторы</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code6}
-        </StyledSyntaxHighlighter>
+          <SubHead>Математические операторы</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code6}
+          </StyledSyntaxHighlighter>
 
-        <SubHead>Media</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code7}
-        </StyledSyntaxHighlighter>
+          <SubHead>Media</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code7}
+          </StyledSyntaxHighlighter>
 
-        <SubHead>Функции</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code8}
-        </StyledSyntaxHighlighter>
+          <SubHead>Функции</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code8}
+          </StyledSyntaxHighlighter>
+        </Block>
+
+        <Block>
+          <Head>SASS</Head>
+          <p>
+            SASS - то же что SCSS только другой синтаксис - отступы (без скобок)
+          </p>
+        </Block>
+
+        <Block>
+          <Head>LESS</Head>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code9}
+          </StyledSyntaxHighlighter>
+          <Important>
+            Возможен вызов javascript прямо из CSS:<br/>
+            @height: `document.body.clientHeight`;
+          </Important>
+          <p>
+            - в LESS в отличие от SASS/SCSS нет логики!<br/>
+            - нет if/then, for и т.п.<br/>
+            - можно подмешивать классы: <b>.styledElem &#123; .someclass &#125;</b>
+          </p>
+        </Block>
+
+        <Block>
+          <Head>STYLUS</Head>
+          <p>
+            - разработан на базе Node.js (можно установить как пакет)<br/>
+            - можно писать и в CSS стиле и в SASS стиле
+          </p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code10}
+          </StyledSyntaxHighlighter>
+        </Block>
 
       </div>
     );

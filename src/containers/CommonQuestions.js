@@ -100,14 +100,19 @@ class CommonQuestions extends Component {
             графику и многое другое.
           </p>
           <p>
-            1. Новые теги: header, footer, section, article, video, audio, progress, nav, meter, time,
-            aside, canvas<br/>
+            1. Новые теги: header, footer, section, article, video, audio, progress, nav,
+            meter, time, aside, canvas, ruby, details, strong<br/>
             2. Новые значения атрибута <b>type</b><br/>
-            3. Новые атрибуты элементов: dragable, contenteditable, hidden, contextmenu, data-*, dropzone,
-            role, spellcheck[8] ...<br/>
+            3. Новые атрибуты элементов: dragable, contenteditable, hidden,
+            contextmenu, data-*, dropzone, role, spellcheck[8] ...<br/>
             4. Автономная работа, благодаря кэшу HTML5<br/>
             5. Можно рисовать, используя CANVAS API<br/>
-            6. 3D графика
+            6. 3D графика<br/>
+            7. Загрузка файлов new FormData<br/>
+            8. drag and drop<br/>
+            9. audio video<br/>
+            10. canvas svg<br/>
+            11. Веб компоненты!
           </p>
           <Important>
             GET - данные отправляются в URL<br/>
@@ -457,7 +462,10 @@ console.log(o.f() === o); // true
             Осуществляет запрос к серверу без перезагрузки страницы<br/>
             По умолчанию запрос к серверу осуществляется методом <b>GET</b><br/>
             <b>ajax</b> - отправил запрос - получил результат<br/>
-            <b>comet</b> - непрерывный канал, по которому приходят данные (чат, аукцион, онлайн редактор)
+            <b>comet</b> - непрерывный канал, по которому приходят данные (чат,
+            аукцион, онлайн редактор). Браузер отправил запрос и держит соединение с сервером
+            ожидая ответа и прерывается только доставкой сообщений, потом тут же делает
+            новый запрос.
           </p>
 <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
 {`var xhr = new XMLHttpRequest();
@@ -532,6 +540,38 @@ foo();
 `}
 </StyledSyntaxHighlighter>
         </Block>
+        <Block>
+          <SubHead>CSS3, media query</SubHead>
+<StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+{`@media условие
+@media all and (color) {...} // все цветные
+@media all and (not handled) {...} // все кроме смартфонов
+@media screen and (max-width: 980px) {...}
+@media only screen and (orientation: portrait) {...}
+
+// Внешнее подключение
+<link href="test.css" rel="stylesheet" media="only screen and (max-width: 480px)">
+
+// Условная загрузка
+if (window.matchMedia("(min-width: 60em)").matches) {...}
+`}
+</StyledSyntaxHighlighter>
+        </Block>
+        <Block>
+          <SubHead>Условные единицы измерения</SubHead>
+          <p>
+            <b>px</b> = 10px или 16.5px<br/>
+            <b>em</b> - относительно размера шрифта<br/>
+            <b>1em</b> - текущий размер шрифта родителя<br/>
+            <b>2em, 0.5em</b> - также допускается<br/>
+            <b>2%</b> - от шрифта родителя<br/>
+            <b>rem</b> - размер шрифта относительно шрифта элемента<br/>
+            <b>vw</b> - 1% ширины окна<br/>
+            <b>vh</b> - 1% высоты окна<br/>
+            <b>vmin</b> - наименьшее из vw и vh (IE9 vm)<br/>
+            <b>vmax</b> - наибольшее из vw и vh
+          </p>
+        </Block>
 
 
 
@@ -550,6 +590,8 @@ a === b // строгое равенство
 .end(); // возвращает предыдущий набор элементов
 
 deffered // объекты, хранят состояние задачи (выполнено, еще не выполнено, выполнено с ошибкой)
+
+[1,2,5,10].sort((a,b) => a - b); // - сортировка массива
 `}
 </StyledSyntaxHighlighter>
         </Block>
