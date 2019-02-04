@@ -593,6 +593,16 @@ deffered // объекты, хранят состояние задачи (вып
 
 [1,2,5,10].sort((a,b) => a - b); // - сортировка массива
 `}
+
+alert(type of null); // object
+alert(null instanceOf Object) // false
+
+0.1 + 0.2 === 0.3 // false
+
+alert(typeof NaN) // Number
+alert(NaN === NaN) // false
+
+~~3.14 // 3
 </StyledSyntaxHighlighter>
         </Block>
       </div>
