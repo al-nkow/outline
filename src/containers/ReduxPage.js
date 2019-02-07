@@ -35,6 +35,10 @@ const code4 = `const mapDispatchToProps = dispatch => ({
 `;
 
 class ReduxPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>
@@ -42,19 +46,19 @@ class ReduxPage extends Component {
 
         <Point>Action</Point>
         <p>
-          это просто объект<br/>
-          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-            { code1 }
-          </StyledSyntaxHighlighter>
+          это просто объект
         </p>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          { code1 }
+        </StyledSyntaxHighlighter>
 
         <Point>Action Creator</Point>
         <p>
           это функция для вызова action<br/>
-          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-            { code2 }
-          </StyledSyntaxHighlighter>
         </p>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          { code2 }
+        </StyledSyntaxHighlighter>
 
         <Point>Reducer</Point>
         <p>
@@ -62,17 +66,15 @@ class ReduxPage extends Component {
           и возвращает новую версию предыдущего состояния (следующее состояние).<br/>
           Разбиваем приложение на кусочки и за каждый кусочек отвечает редьюсер.<br/>
           <b>В редьюсере всегда возвращаем новый объект!</b><br/>
-          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-            { code3 }
-          </StyledSyntaxHighlighter>
         </p>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          { code3 }
+        </StyledSyntaxHighlighter>
 
         <Point>mapDispatchToProps</Point>
-        <p>
-          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-            { code4 }
-          </StyledSyntaxHighlighter>
-        </p>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          { code4 }
+        </StyledSyntaxHighlighter>
       </div>
     );
   }

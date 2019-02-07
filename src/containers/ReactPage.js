@@ -34,9 +34,11 @@ const code4 = `class MyComponent extends React.Component {
 `;
 
 class ReactPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   render () {
-
     return (
       <div>
         <Head>React</Head>
@@ -55,22 +57,24 @@ class ReactPage extends Component {
         <p>
           Можно использовать refs, указать установку фокуса, таймауты,
           ajax запросы, взаимодействия с другими библиотеками.
-          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-            { code4 }
-          </StyledSyntaxHighlighter>
         </p>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          { code4 }
+        </StyledSyntaxHighlighter>
         <Point>componentWillReceiveProps <Mark>(deprecated)</Mark></Point>
         <p>
           Здесь компонент получает новые props. Старые доступны как this.props
-          а новые ComponentWillReceiveProps(nextProps) {'{...}'}<br/>
-          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-            { code3 }
-          </StyledSyntaxHighlighter>
-          Новый метод <b>getDerivedStateFormProps</b>:
-          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-            { code1 }
-          </StyledSyntaxHighlighter>
+          а новые ComponentWillReceiveProps(nextProps) {'{...}'}
         </p>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          { code3 }
+        </StyledSyntaxHighlighter>
+        <p>
+          Новый метод <b>getDerivedStateFormProps</b>:
+        </p>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          { code1 }
+        </StyledSyntaxHighlighter>
         <Point>shouldComponentUpdate</Point>
         <p>
           Можно отменить обновление компонента

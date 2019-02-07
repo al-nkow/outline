@@ -67,6 +67,10 @@ const code6 = `console.log(test.call(obj.prop));
 `;
 
 class QuestionsPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>

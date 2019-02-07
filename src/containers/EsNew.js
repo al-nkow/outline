@@ -250,6 +250,10 @@ clicks.forEach(function(e) {
 `;
 
 class Cmpnt extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <Fragment>

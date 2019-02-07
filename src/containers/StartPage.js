@@ -28,6 +28,10 @@ const Divider = styled.div`
 `;
 
 class StartPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <Wrap>

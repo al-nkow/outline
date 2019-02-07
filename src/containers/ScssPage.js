@@ -86,6 +86,9 @@ text-overflow: ellipsis;
 `;
 
 class ScssPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   render () {
     return (

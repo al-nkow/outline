@@ -231,6 +231,10 @@ const codeString17 = `co(function *() {
 `;
 
 class AsyncPage extends PureComponent {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>

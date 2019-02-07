@@ -16,6 +16,10 @@ const code1 = `var socket = new WebSocket("ws://javascript.ru/ws");
 `;
 
 class ApiPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>

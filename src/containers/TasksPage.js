@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Important from '../components/Important';
-import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
-import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
+import {Head, SubHead, StyledSyntaxHighlighter} from '../components/shared';
+import {tomorrow} from 'react-syntax-highlighter/dist/styles/prism';
 
 const task1 = `function numeric() {
   let inner = 1;
@@ -257,73 +257,81 @@ typeof null // "object" - это ошибка typeof но ее оставили 
 typeof function(){} // "function" - но на самом деле это объект
 `;
 
-export default function() {
-  return (
-    <div>
-      <Head>Типичные задачи</Head>
-      <Important>
-        Решить задачу: Есть массив с четными и нечетными числами расположенными в
-        произвольных местах. Отсортировать только нечётные числа по возрастанию,
-        при этом четные числа должны остаться на своих местах!
-      </Important>
+class TasksPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
-      <SubHead>Настраиваемые функции</SubHead>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task1 }
-      </StyledSyntaxHighlighter>
+  render() {
+    return (
+      <div>
+        <Head>Типичные задачи</Head>
+        <Important>
+          Решить задачу: Есть массив с четными и нечетными числами расположенными в
+          произвольных местах. Отсортировать только нечётные числа по возрастанию,
+          при этом четные числа должны остаться на своих местах!
+        </Important>
 
-      <SubHead>Каррирование</SubHead>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task2 }
-      </StyledSyntaxHighlighter>
+        <SubHead>Настраиваемые функции</SubHead>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task1}
+        </StyledSyntaxHighlighter>
 
-      <SubHead>Задачи Tech round</SubHead>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task3 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task4 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task5 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task6 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task7 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task8 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task9 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task10 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task11 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task12 }
-      </StyledSyntaxHighlighter>
+        <SubHead>Каррирование</SubHead>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task2}
+        </StyledSyntaxHighlighter>
 
-      <SubHead>THIS</SubHead>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task13 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task14 }
-      </StyledSyntaxHighlighter>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task15 }
-      </StyledSyntaxHighlighter>
+        <SubHead>Задачи Tech round</SubHead>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task3}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task4}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task5}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task6}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task7}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task8}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task9}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task10}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task11}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task12}
+        </StyledSyntaxHighlighter>
 
-      <SubHead>Other</SubHead>
-      <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-        { task16 }
-      </StyledSyntaxHighlighter>
-    </div>
-  );
+        <SubHead>THIS</SubHead>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task13}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task14}
+        </StyledSyntaxHighlighter>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task15}
+        </StyledSyntaxHighlighter>
+
+        <SubHead>Other</SubHead>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {task16}
+        </StyledSyntaxHighlighter>
+      </div>
+    );
+  }
 }
+
+export default TasksPage;

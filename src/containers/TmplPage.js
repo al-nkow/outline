@@ -102,6 +102,10 @@ const code8 = `carManager.execute('requestInfo', 'Ford', 'k759px');
 `;
 
 class TmplPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>

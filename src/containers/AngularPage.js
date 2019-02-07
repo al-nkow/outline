@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Head } from '../components/shared';
 
 class AngularPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>

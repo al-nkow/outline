@@ -59,6 +59,10 @@ const code4 = `d3.select('body').selectAll('p') // будем работать �
 `;
 
 class CanvasPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>

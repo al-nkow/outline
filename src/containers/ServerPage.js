@@ -7,6 +7,10 @@ const code1 = `sudo /etc/init.d/nginx start
 `;
 
 class ServerPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>

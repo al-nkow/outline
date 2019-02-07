@@ -38,6 +38,10 @@ const code2 = `<section>
 `;
 
 class CommonQuestions extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>

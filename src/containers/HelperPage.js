@@ -233,6 +233,10 @@ window.onclick = function(event) {
 `;
 
 class HelperPage extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render () {
     return (
       <div>
