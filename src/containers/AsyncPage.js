@@ -1,275 +1,237 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
-const Head = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
+const codeString1 = `const promise = new Promise((resolve, reject) => {
+  // Эта функция будет вызвана автоматически
+
+  // В ней можно делать любые асинхронные операции,
+  // А когда они завершатся — нужно вызвать одно из:
+  // resolve(результат) при успешном выполнении
+  // reject(ошибка) при ошибке
+})
+
+promise.then(onFulfilled, onRejected);
+// или
+promise.then(res => console.log(res)).catch(err => console.log(err));
 `;
 
-const SubHead = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
+const codeString2 = `function myAsyncFunction(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onload = () => resolve(xhr.responseText);
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
+  });
+}
 `;
 
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-  border-radius: 4px;
-  padding: 0!important;
-  margin: 20px 0!important;
-  font-size: 14px;
+const codeString3 = `'use strict';
+
+let p = new Promise((resolve, reject) => {
+  // то же что reject(new Error("o_O"))
+  throw new Error("o_O");
+})
+
+p.catch(alert); // Error: o_O
+`;
+
+const codeString4 = `'use strict';
+
+// сделать запрос
+myAsyncFunction('/some/address/user.json')
+  // 1. Получить данные о пользователе в JSON и передать дальше
+  .then(response => {
+    console.log(response);
+    let user = JSON.parse(response);
+    return user;
+  })
+  // 2. Получить информацию с github
+  .then(user => {
+    console.log(user);
+    return myAsyncFunction(\`https://api.github.com/users/\${user.name}\`);
+    // Здесь будет ждать пока в myAsyncFunction сработает resolve()
+  })
+  // 3. Вывести аватар на 3 секунды (можно с анимацией)
+  .then(githubUser => {
+    console.log(githubUser);
+    githubUser = JSON.parse(githubUser);
+
+    let img = new Image();
+    img.src = githubUser.avatar_url;
+    img.className = "promise-avatar-example";
+    document.body.appendChild(img);
+
+    setTimeout(() => img.remove(), 3000); // (*)
+});
+`;
+
+const codeString5 = `const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject({data: 'result'});
+  }, 3000);
+});
+
+promise.then((res) => {
+  console.log(res);
+})
+.then(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(777);
+    }, 2000);
+  })
+})
+.then((res) => {
+  console.log('IAM LAST!!!!', res);
+})
+.catch((err) => {
+  console.log('ERROR1: ', err);
+  return err;
+})
+.then((res) => {
+  console.log('Res after catch: ', res);
+})
+.then((res) => {
+  throw new Error('One more error')
+})
+.catch((err) => {
+  console.log('ERROR2: ', err);
+});
+`;
+
+const codeString6 = `Promise.all([
+  myAsyncFunction('/article/promise/user.json'),
+  myAsyncFunction('/article/promise/guest.json')
+]).then(results => {
+  alert(results);
+});
+`;
+
+const codeString7 = `// Этот вызов создаёт успешно выполнившийся промис с результатом value
+Promise.resolve(value)
+// Это все равно что записать так:
+new Promise((resolve) => resolve(value))
+
+// Аналогично Promise.reject(error) создаёт уже выполнившийся промис, 
+// но не с успешным результатом, а с ошибкой error
+`;
+
+const codeString8 = `let promise = fetch(url[, options]);
+`;
+
+const codeString9 = `const url = 'https://randomuser.me/api';
+
+const myHeaders = new Headers();
+myHeaders.append('Content-Type', 'application/json');
+myHeaders.append('X-Custom-Header', 'ProcessThisImmediately');
+
+let data = {
+    name: 'Sara'
+} 
+
+let fetchData = { 
+    method: 'POST', 
+    body: data,
+    headers: myHeaders
+}
+
+fetch(url, fetchData)
+.then((response) => {
+  // Объект response можно прочитать в разных форматах
+  // response.arrayBuffer()
+  // response.blob()
+  // response.formData()
+  // response.json()
+  // response.text()
+  // эти вызовы возвращают промис
+})
+.then(function(res) {
+    // Здесь мы имеем результат операции например response.json()
+})
+.catch( alert );
+`;
+
+const codeString10 = `// unicorn возвращает промис
+// getRainbow возвращает промис
+// в rainbow записывается результат промиса
+async function unicorn() {
+  try {
+    let rainbow = await getRainbow();
+    return rainbow.data.colors;
+  } catch(e) {
+    return {
+      message: e.data.message,
+      someText: 'Custom error message'
+    }
+  }
+}
+`;
+
+const codeString11 = `async function unicorn() {
+  let [rainbow, food] = await Promise.all([getRainbow(), getFood()]);
+  return {rainbow, food}
+}
+`;
+
+const codeString12 = `async function getAllUnicorns(names) {
+  return await Promise.all(names.map(async function(name) {
+    var unicorn = await getUnicorn(name);
+    return unicorn;
+  }));
+}
+`;
+
+const codeString13 = `async function throwsValue() {
+  throw new Error('oops');
+}
+
+throwsValue()
+.then((resolve) => {
+  console.log('resolve:' + resolve);
+})
+.catch((reject) => {
+  console.log('reject:' + reject);
+});
+//prints 'reject:Error: oops'
+`;
+
+const codeString14 = `async getPost = () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
+  const data = await response.json();
+  console.log(data);
+}
+`;
+
+const codeString15 = `const load = async () => {
+  const a = await Promise.resolve(5);
+  const b = await Promise.resolve(10);
+  return a + b;
+};
+load().then(value => console.log(value)); // 15
+`;
+
+const codeString16 = `function* generatorCreator () {
+  const response = yield fetch('https://jsonplaceholder.typicode.com/posts/1'); 
+  const data = yield response.json();
+  console.log(data);
+}
+
+let generator = generatorCreator();
+`;
+
+const codeString17 = `co(function *() {
+  let post = yield Post.findById(10); // wait Promise resolve
+  let comments = yield post.getComments(); // wait Promise resolve
+  console.log(post, comments);
+}).catch(function(err){
+  console.error(err);
+});
 `;
 
 class AsyncPage extends PureComponent {
-
   render () {
-
-    const codeString1 = `
-    const promise = new Promise((resolve, reject) => {
-      // Эта функция будет вызвана автоматически
-    
-      // В ней можно делать любые асинхронные операции,
-      // А когда они завершатся — нужно вызвать одно из:
-      // resolve(результат) при успешном выполнении
-      // reject(ошибка) при ошибке
-    })
-    
-    promise.then(onFulfilled, onRejected);
-    // или
-    promise.then(res => console.log(res)).catch(err => console.log(err));
-    `;
-
-    const codeString2 = `
-    function myAsyncFunction(url) {
-      return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", url);
-        xhr.onload = () => resolve(xhr.responseText);
-        xhr.onerror = () => reject(xhr.statusText);
-        xhr.send();
-      });
-    }
-    `;
-
-    const codeString3 = `
-    'use strict';
-
-    let p = new Promise((resolve, reject) => {
-      // то же что reject(new Error("o_O"))
-      throw new Error("o_O");
-    })
-    
-    p.catch(alert); // Error: o_O
-    `;
-
-    const codeString4 = `
-    'use strict';
-
-    // сделать запрос
-    myAsyncFunction('/some/address/user.json')
-      // 1. Получить данные о пользователе в JSON и передать дальше
-      .then(response => {
-        console.log(response);
-        let user = JSON.parse(response);
-        return user;
-      })
-      // 2. Получить информацию с github
-      .then(user => {
-        console.log(user);
-        return myAsyncFunction(\`https://api.github.com/users/\${user.name}\`);
-        // Здесь будет ждать пока в myAsyncFunction сработает resolve()
-      })
-      // 3. Вывести аватар на 3 секунды (можно с анимацией)
-      .then(githubUser => {
-        console.log(githubUser);
-        githubUser = JSON.parse(githubUser);
-
-        let img = new Image();
-        img.src = githubUser.avatar_url;
-        img.className = "promise-avatar-example";
-        document.body.appendChild(img);
-
-        setTimeout(() => img.remove(), 3000); // (*)
-    });
-    `;
-
-    const codeString5 = `
-    const promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        reject({data: 'result'});
-      }, 3000);
-    });
-    
-    promise.then((res) => {
-      console.log(res);
-    })
-    .then(() => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(777);
-        }, 2000);
-      })
-    })
-    .then((res) => {
-      console.log('IAM LAST!!!!', res);
-    })
-    .catch((err) => {
-      console.log('ERROR1: ', err);
-      return err;
-    })
-    .then((res) => {
-      console.log('Res after catch: ', res);
-    })
-    .then((res) => {
-      throw new Error('One more error')
-    })
-    .catch((err) => {
-      console.log('ERROR2: ', err);
-    });
-    `;
-
-    const codeString6 = `
-    Promise.all([
-      myAsyncFunction('/article/promise/user.json'),
-      myAsyncFunction('/article/promise/guest.json')
-    ]).then(results => {
-      alert(results);
-    });
-    `;
-
-    const codeString7 = `
-    // Этот вызов создаёт успешно выполнившийся промис с результатом value
-    Promise.resolve(value)
-    // Это все равно что записать так:
-    new Promise((resolve) => resolve(value))
-    
-    // Аналогично Promise.reject(error) создаёт уже выполнившийся промис, 
-    // но не с успешным результатом, а с ошибкой error
-    `;
-
-    const codeString8 = `
-    let promise = fetch(url[, options]);
-    `;
-
-    const codeString9 = `
-    const url = 'https://randomuser.me/api';
-    
-    const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-    myHeaders.append('X-Custom-Header', 'ProcessThisImmediately');
-    
-    let data = {
-        name: 'Sara'
-    } 
-    
-    let fetchData = { 
-        method: 'POST', 
-        body: data,
-        headers: myHeaders
-    }
-    
-    fetch(url, fetchData)
-    .then((response) => {
-      // Объект response можно прочитать в разных форматах
-      // response.arrayBuffer()
-      // response.blob()
-      // response.formData()
-      // response.json()
-      // response.text()
-      // эти вызовы возвращают промис
-    })
-    .then(function(res) {
-        // Здесь мы имеем результат операции например response.json()
-    })
-    .catch( alert );
-    `;
-
-    const codeString10 = `
-    // unicorn возвращает промис
-    // getRainbow возвращает промис
-    // в rainbow записывается результат промиса
-    async function unicorn() {
-      try {
-        let rainbow = await getRainbow();
-        return rainbow.data.colors;
-      } catch(e) {
-        return {
-          message: e.data.message,
-          someText: 'Custom error message'
-        }
-      }
-    }
-    `;
-
-    const codeString11 = `
-    async function unicorn() {
-      let [rainbow, food] = await Promise.all([getRainbow(), getFood()]);
-      return {rainbow, food}
-    }
-    `;
-
-    const codeString12 = `
-    async function getAllUnicorns(names) {
-      return await Promise.all(names.map(async function(name) {
-        var unicorn = await getUnicorn(name);
-        return unicorn;
-      }));
-    }
-    `;
-
-    const codeString13 = `
-    async function throwsValue() {
-      throw new Error('oops');
-    }
-
-    throwsValue()
-    .then((resolve) => {
-      console.log('resolve:' + resolve);
-    })
-    .catch((reject) => {
-      console.log('reject:' + reject);
-    });
-    //prints 'reject:Error: oops'
-    `;
-
-    const codeString14 = `
-    async getPost = () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts/1');
-      const data = await response.json();
-      console.log(data);
-    }
-    `;
-
-    const codeString15 = `
-    const load = async () => {
-      const a = await Promise.resolve(5);
-      const b = await Promise.resolve(10);
-      return a + b;
-    };
-    load().then(value => console.log(value)); // 15
-    `;
-
-    const codeString16 = `
-    function* generatorCreator () {
-      const response = yield fetch('https://jsonplaceholder.typicode.com/posts/1'); 
-      const data = yield response.json();
-      console.log(data);
-    }
-    
-    let generator = generatorCreator();
-    `;
-
-    const codeString17 = `
-    co(function *() {
-      let post = yield Post.findById(10); // wait Promise resolve
-      let comments = yield post.getComments(); // wait Promise resolve
-      console.log(post, comments);
-    }).catch(function(err){
-      console.error(err);
-    });
-    `;
-
     return (
       <div>
         <Head>Асинхронное программирование</Head>
@@ -479,9 +441,13 @@ class AsyncPage extends PureComponent {
           { codeString17 }
         </StyledSyntaxHighlighter>
 
+        <br/>
+        <SubHead>Observables RxJS</SubHead>
+        <p>
+          TODO!
+        </p>
 
         {/* TODO: Observables RxJS*/}
-
 
       </div>
     );

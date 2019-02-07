@@ -1,15 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-
-const Head = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
-`;
-
-const SubHead = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
-`;
+import { Head, SubHead } from '../components/shared';
 
 class SolidPage extends Component {
   render () {
@@ -59,7 +49,6 @@ class SolidPage extends Component {
           вызывающий код. Зависимость на абстракциях. Нет зависимости на что-то конкретное.
           Модули верхних уровней не должны зависеть от модулей нижних уровней.
         </p>
-
       </div>
     );
   }

@@ -1,27 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import Important from '../components/Important';
-
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-
-const Head = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
-`;
-
-const SubHead = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-  border-radius: 4px;
-  margin: 20px 0!important;
-  font-size: 14px;
-  padding: 20px!important;
-`;
-
 
 const task1 = `function numeric() {
   let inner = 1;

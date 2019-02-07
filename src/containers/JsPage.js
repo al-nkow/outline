@@ -46,7 +46,7 @@ class JsPage extends Component {
   render () {
     return (
       <div>
-        <Head>Javascript общие вопросы</Head>
+        <Head>Javascript вопросы - часть 2</Head>
         <SubHead>Как работает Javascript</SubHead>
         <p>
           На движке V8 от google, js - однопоточный язык. Использует очередь функций

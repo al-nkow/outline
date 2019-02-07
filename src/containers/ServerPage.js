@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-
 import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
 const code1 = `sudo /etc/init.d/nginx start

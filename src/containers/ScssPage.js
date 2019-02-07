@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import Important from '../components/Important';
-
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
 const code1 = `$font-stack: Helvetica, sans-serif;
@@ -168,7 +167,6 @@ class ScssPage extends Component {
             {code10}
           </StyledSyntaxHighlighter>
         </Block>
-
       </div>
     );
   }

@@ -1,28 +1,6 @@
 import React, { Component } from 'react';
-// import { Route } from 'react-router-dom';
-import styled from 'styled-components';
-
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Point, Head, StyledSyntaxHighlighter } from '../components/shared';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-
-
-const Head = styled.h1`
-  font-size: 20px;
-  font-weight: 500;
-`;
-
-const Point = styled.div`
-  font-size: 18px;
-  color: #518e11;
-  margin-bottom: 5px;
-`;
-
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-  border-radius: 4px;
-  margin: 20px 0!important;
-  font-size: 14px;
-  padding: 20px!important;
-`;
 
 const code1 = `{
   type: 'ЗАГРУЗИ_ФОТО',
@@ -57,31 +35,29 @@ const code4 = `const mapDispatchToProps = dispatch => ({
 `;
 
 class ReduxPage extends Component {
-
   render () {
-
     return (
       <div>
         <Head>Redux</Head>
 
+        <Point>Action</Point>
         <p>
-          <Point>Action</Point>
           это просто объект<br/>
           <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
             { code1 }
           </StyledSyntaxHighlighter>
         </p>
 
+        <Point>Action Creator</Point>
         <p>
-          <Point>Action Creator</Point>
           это функция для вызова action<br/>
           <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
             { code2 }
           </StyledSyntaxHighlighter>
         </p>
 
+        <Point>Reducer</Point>
         <p>
-          <Point>Reducer</Point>
           это функция, которая принимает предыдущее состояние и действие (state и action)
           и возвращает новую версию предыдущего состояния (следующее состояние).<br/>
           Разбиваем приложение на кусочки и за каждый кусочек отвечает редьюсер.<br/>
@@ -91,14 +67,12 @@ class ReduxPage extends Component {
           </StyledSyntaxHighlighter>
         </p>
 
+        <Point>mapDispatchToProps</Point>
         <p>
-          <Point>mapDispatchToProps</Point>
           <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
             { code4 }
           </StyledSyntaxHighlighter>
         </p>
-
-
       </div>
     );
   }

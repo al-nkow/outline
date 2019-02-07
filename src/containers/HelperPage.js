@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-
-// import Important from '../components/Important';
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
 const code1 = `var array = [elem0, elem1, elem2, elem3];
@@ -499,15 +497,17 @@ class HelperPage extends Component {
             для получения элемента.<br/>
             Вот список упорядоченный по скорости выборки элементов, начиная с наибыстрейшего:
           </p>
-          <b>ID (#myID)</b><br/>
-          <b>Класс (.myClass)</b><br/>
-          <b>Тэг (div, p)</b><br/>
-          <b>Элемент, находящийся рядом (sibling) (div+p, div~p)</b><br/>
-          <b>Прямой потомок (div &gt; p)</b><br/>
-          <b>Все потомки (div p)</b><br/>
-          <b>Универсальный (*)</b><br/>
-          <b>Атрибут (input[type="checkbox"])</b><br/>
-          <b>Псевдо-элемент (p:first-child)</b>
+          <p>
+            <b>ID (#myID)</b><br/>
+            <b>Класс (.myClass)</b><br/>
+            <b>Тэг (div, p)</b><br/>
+            <b>Элемент, находящийся рядом (sibling) (div+p, div~p)</b><br/>
+            <b>Прямой потомок (div &gt; p)</b><br/>
+            <b>Все потомки (div p)</b><br/>
+            <b>Универсальный (*)</b><br/>
+            <b>Атрибут (input[type="checkbox"])</b><br/>
+            <b>Псевдо-элемент (p:first-child)</b>
+          </p>
         </Block>
 
         <Block>

@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #323641;
+  background: #efeadf;
 }
 
 code {
@@ -17,5 +18,5 @@ code {
 
 p {
   font-size: 16px;
-  line-height: 22px;
+  line-height: 24px;
 }

@@ -8,8 +8,9 @@ const Wrap = styled.div`
   left: 0;
   right: 0;
   padding: 10px;
-  background: #cccccc;
+  background: #253648;
   z-index: 100;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
 `;
 
 const Inner = styled.div`
@@ -18,7 +19,7 @@ const Inner = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  color: #333333;
+  color: #ffffff;
   text-decoration: none;
 `;
 

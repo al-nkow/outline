@@ -1,26 +1,7 @@
 import React, { Component } from 'react';
 import Important from '../components/Important';
-import styled from 'styled-components';
-
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-
-const Head = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
-`;
-
-const SubHead = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-  border-radius: 4px;
-  margin: 20px 0!important;
-  font-size: 14px;
-  padding: 20px!important;
-`;
 
 const code1 = `function Observable {
   var observers = [];
@@ -121,117 +102,139 @@ const code8 = `carManager.execute('requestInfo', 'Ford', 'k759px');
 `;
 
 class TmplPage extends Component {
-
   render () {
     return (
       <div>
         <Head>Шаблоны проектирования</Head>
         <p>Это проверенный способ решения проблем</p>
 
-        <SubHead>Порождающие шаблоны (Creational)</SubHead>
-        <p>
-          Cоздание новых объектов<br/>
-          1. Конструктор (Constructor)<br/>
-          2. Модульный (Module)<br/>
-          3. Фабричный метод (Factory)<br/>
-          4. Одиночка (Singletone)
-        </p>
+        <Block>
+          <SubHead>Порождающие шаблоны (Creational)</SubHead>
+          <p>
+            Cоздание новых объектов<br/>
+            1. Конструктор (Constructor)<br/>
+            2. Модульный (Module)<br/>
+            3. Фабричный метод (Factory)<br/>
+            4. Одиночка (Singletone)
+          </p>
+        </Block>
 
-        <SubHead>Структурные шаблоны</SubHead>
-        <p>
-          1. Декоратор (Decorator)<br/>
-          2. Фасад (Facade)
-        </p>
+        <Block>
+          <SubHead>Структурные шаблоны</SubHead>
+          <p>
+            1. Декоратор (Decorator)<br/>
+            2. Фасад (Facade)
+          </p>
+        </Block>
 
-        <SubHead>Поведенческие шаблоны (Behavioral)</SubHead>
-        <p>
-          Определяют, как объекты соотносятся друг с другом<br/>
-          1. Наблюдатель (Observer)<br/>
-          2. Посредник (Mediator)<br/>
-          3. Команда (Command)
-        </p>
+        <Block>
+          <SubHead>Поведенческие шаблоны (Behavioral)</SubHead>
+          <p>
+            Определяют, как объекты соотносятся друг с другом<br/>
+            1. Наблюдатель (Observer)<br/>
+            2. Посредник (Mediator)<br/>
+            3. Команда (Command)
+          </p>
+        </Block>
 
-        <SubHead>Конструктор</SubHead>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code2}
-        </StyledSyntaxHighlighter>
+        <Block>
+          <SubHead>Конструктор</SubHead>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code2}
+          </StyledSyntaxHighlighter>
+        </Block>
 
-        <SubHead>Модуль</SubHead>
-        <p>
-          Используется для инкапсуляции методов (сокрытия состояния объекта от прямого доступа)
-        </p>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code3}
-        </StyledSyntaxHighlighter>
+        <Block>
+          <SubHead>Модуль</SubHead>
+          <p>
+            Используется для инкапсуляции методов (сокрытия состояния объекта от прямого доступа)
+          </p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code3}
+          </StyledSyntaxHighlighter>
+        </Block>
 
-        <SubHead>Фабрика</SubHead>
-        <p>
-          Используется, чтобы упростить создание объектов. Проще генерировать экземпляры
-          объектов, не требует использования конструктора. Функция возвращает разные классы
-          в зависимости от какого-то аргумента.
-        </p>
+        <Block>
+          <SubHead>Фабрика</SubHead>
+          <p>
+            Используется, чтобы упростить создание объектов. Проще генерировать экземпляры
+            объектов, не требует использования конструктора. Функция возвращает разные классы
+            в зависимости от какого-то аргумента.
+          </p>
+        </Block>
 
-        <SubHead>Singleton</SubHead>
-        <p>
-          Это класс с одним единственным экземпляром! Одна глобальная точка доступа и только
-          один объект в приложении. (Создать глобальную переменную с присвоением объекта)
-        </p>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code4}
-        </StyledSyntaxHighlighter>
-        <Important>
-          Два объекта равны, если относятся к одному и тому же объекту.
-          (Сравнение объекта истинно лишь в том случае, если оба операнда
-          ссылаются на один и тот же объект в памяти)
-        </Important>
+        <Block>
+          <SubHead>Singleton</SubHead>
+          <p>
+            Это класс с одним единственным экземпляром! Одна глобальная точка доступа и только
+            один объект в приложении. (Создать глобальную переменную с присвоением объекта)
+          </p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code4}
+          </StyledSyntaxHighlighter>
+          <Important>
+            Два объекта равны, если относятся к одному и тому же объекту.
+            (Сравнение объекта истинно лишь в том случае, если оба операнда
+            ссылаются на один и тот же объект в памяти)
+          </Important>
+        </Block>
 
-        <SubHead>Декоратор</SubHead>
-        <p>
-          Используется чтобы добавлять новую функциональность объектам
-        </p>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code5}
-        </StyledSyntaxHighlighter>
-        <Important>
-          Object.create() - создает объект, который не имеет прототипа
-        </Important>
+        <Block>
+          <SubHead>Декоратор</SubHead>
+          <p>
+            Используется чтобы добавлять новую функциональность объектам
+          </p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code5}
+          </StyledSyntaxHighlighter>
+          <Important>
+            Object.create() - создает объект, который не имеет прототипа
+          </Important>
+        </Block>
 
-        <SubHead>Фасад (Facade)</SubHead>
-        <p>
-          Используется для создания простого интерфейса (упрощает функциональность, как, например jQuery).
-          Создаем объект - и доступ к его методам через этот объект.
-        </p>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code6}
-        </StyledSyntaxHighlighter>
+        <Block>
+          <SubHead>Фасад (Facade)</SubHead>
+          <p>
+            Используется для создания простого интерфейса (упрощает функциональность, как, например jQuery).
+            Создаем объект - и доступ к его методам через этот объект.
+          </p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code6}
+          </StyledSyntaxHighlighter>
+        </Block>
 
-        <SubHead>Observer</SubHead>
-        <p>
-          Позволяет объектам наблюдать за объектами и быть оповещенными об изменениях.
-        </p>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code1}
-        </StyledSyntaxHighlighter>
+        <Block>
+          <SubHead>Observer</SubHead>
+          <p>
+            Позволяет объектам наблюдать за объектами и быть оповещенными об изменениях.
+          </p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code1}
+          </StyledSyntaxHighlighter>
+        </Block>
 
-        <SubHead>Посредник (Mediator)</SubHead>
-        <p>
-          Один объект контролирует сообщение между объектами, поэтому объекты
-          не сообщаются друг с другом напрямую. Это похоже на Observer, только каждому объекту
-          при создании передается этот управляющий объект.
-        </p>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code7}
-        </StyledSyntaxHighlighter>
+        <Block>
+          <SubHead>Посредник (Mediator)</SubHead>
+          <p>
+            Один объект контролирует сообщение между объектами, поэтому объекты
+            не сообщаются друг с другом напрямую. Это похоже на Observer, только каждому объекту
+            при создании передается этот управляющий объект.
+          </p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code7}
+          </StyledSyntaxHighlighter>
+        </Block>
 
-        <SubHead>Command</SubHead>
-        <p>
-          Инкапсулирует вызов метода в один объект. Все методы в одном объекте и обращаемся к ним
-          через один метод, в который передаем имя необходимого метода.
-        </p>
-        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
-          {code8}
-        </StyledSyntaxHighlighter>
-
+        <Block>
+          <SubHead>Command</SubHead>
+          <p>
+            Инкапсулирует вызов метода в один объект. Все методы в одном объекте и обращаемся к ним
+            через один метод, в который передаем имя необходимого метода.
+          </p>
+          <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+            {code8}
+          </StyledSyntaxHighlighter>
+        </Block>
       </div>
     );
   }

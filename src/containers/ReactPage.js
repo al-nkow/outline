@@ -1,38 +1,6 @@
 import React, { Component } from 'react';
-// import { Route } from 'react-router-dom';
-import styled from 'styled-components';
-
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Mark, Point, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-
-const Head = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
-`;
-
-const SubHead = styled.h2`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-const Point = styled.div`
-  font-size: 18px;
-  color: #518e11;
-  margin-bottom: 5px;
-`;
-
-const Mark = styled.span`
-  color: red;
-  font-size: 16px;
-  font-weight: 300;
-`;
-
-const StyledSyntaxHighlighter = styled(SyntaxHighlighter)`
-  border-radius: 4px;
-  margin: 20px 0!important;
-  font-size: 14px;
-  padding: 20px!important;
-`;
 
 const code1 = `static getDerivedStateFromProps(nextProps, prevState) {...}
   // нет доступа к this.props и this.state!
@@ -79,56 +47,51 @@ class ReactPage extends Component {
           данных на настоящий DOM.
         </p>
         <SubHead>Жизненный цикл компонентов</SubHead>
+        <Point>componentWillMount <Mark>(deprecated)</Mark></Point>
         <p>
-          <Point>ComponentWillMount <Mark>(deprecated)</Mark></Point>
           Компонент будет примонтирован
         </p>
+        <Point>componentDidMount</Point>
         <p>
-          <Point>ComponentDidMount</Point>
           Можно использовать refs, указать установку фокуса, таймауты,
           ajax запросы, взаимодействия с другими библиотеками.
           <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
             { code4 }
           </StyledSyntaxHighlighter>
         </p>
+        <Point>componentWillReceiveProps <Mark>(deprecated)</Mark></Point>
         <p>
-          <Point>ComponentWillReceiveProps <Mark>(deprecated)</Mark></Point>
           Здесь компонент получает новые props. Старые доступны как this.props
           а новые ComponentWillReceiveProps(nextProps) {'{...}'}<br/>
           <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
             { code3 }
           </StyledSyntaxHighlighter>
-          Новый метод getDerivedStateFormProps:
+          Новый метод <b>getDerivedStateFormProps</b>:
           <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
             { code1 }
           </StyledSyntaxHighlighter>
         </p>
+        <Point>shouldComponentUpdate</Point>
         <p>
-          <Point>ShouldComponentUpdate</Point>
           Можно отменить обновление компонента
         </p>
+        <Point>componentWillUpdate <Mark>(deprecated)</Mark></Point>
         <p>
-          <Point>ComponentWillUpdate <Mark>(deprecated)</Mark></Point>
           Вызывается прямо перед <b>render</b> когда новые props и state получены.
         </p>
+        <Point>componentDidUpdate</Point>
         <p>
-          <Point>componentDidUpdate</Point>
           Вызывается сразу после <b>render</b>. Не вызывается в момент первого рендера!
         </p>
+        <Point>componentWillUnmount</Point>
         <p>
-          <Point>componentWillUnmount</Point>
           Вызывается перед тем, как компонент будет удален из DOM.
           Здесь можно отписаться от прослушивания событий.
         </p>
-
         <SubHead>Pure Component</SubHead>
         <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
           { code2 }
         </StyledSyntaxHighlighter>
-
-
-
-
       </div>
     );
   }

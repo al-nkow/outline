@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
-
 import Important from '../components/Important';
 import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
