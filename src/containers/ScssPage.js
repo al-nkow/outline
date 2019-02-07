@@ -18,7 +18,7 @@ const code2 = `nav {
 }
 `;
 
-const code3 = ` // _partial.scss
+const code3 = `// _partial.scss
 // если стоит _ - тогда не компилируется в css а только импортируется
 @import partial
 `;
