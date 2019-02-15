@@ -578,11 +578,6 @@ if (window.matchMedia("(min-width: 60em)").matches) {...}
         </Block>
 
 
-
-
-
-
-
         <Block>
           <SubHead>UNCATEGORIZED</SubHead>
 <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
@@ -596,7 +591,6 @@ a === b // строгое равенство
 deffered // объекты, хранят состояние задачи (выполнено, еще не выполнено, выполнено с ошибкой)
 
 [1,2,5,10].sort((a,b) => a - b); // - сортировка массива
-`}
 
 alert(type of null); // object
 alert(null instanceOf Object) // false
@@ -607,6 +601,48 @@ alert(typeof NaN) // Number
 alert(NaN === NaN) // false
 
 ~~3.14 // 3
+
+// ===========================
+// [1,2,3,4,5].duplicator(); // [1,2,3,4,5,1,2,3,4,5]
+
+var arr = [1,2,3,4,5];
+Array.prototype.duplicator = Array.prototype.duplicator ||
+function() {
+  var dup = this.reduce(function(res, val, i) {
+    res.push(val);
+    return res;
+  }, this)
+  return dup;
+}
+
+// ===========================
+function createCounter() {
+  var numberOfCalls = 0;
+  return function() {
+    return ++numberOfCalls;
+  }
+}
+
+var fn = createCounter();
+
+fn(); // 1
+fn(); // 2
+fn(); // 3
+
+// ===========================
+for (var i=0; i<10; i++) { // i++ выполняется перед проверкой условия!!!
+  (function(i) {
+    setTimeout(function() {
+      console.log(i);
+    }, 1000);
+  })(i); // кэшируем i
+}
+
+// если не кэшировать то через секунду
+// 9 раз выведется переменная i которая к тому моменту
+// будет равна 10!
+`}
+
 </StyledSyntaxHighlighter>
         </Block>
       </div>

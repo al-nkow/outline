@@ -40,3 +40,12 @@ export const Mark = styled.span`
   font-size: 16px;
   font-weight: 300;
 `;
+
+export const Image = styled.img`
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid #f5f5f5;
+  border-radius: 2px;
+  margin: 0 auto 10px auto;
+`;
