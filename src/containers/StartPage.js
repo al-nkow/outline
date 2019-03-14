@@ -71,6 +71,11 @@ class StartPage extends Component {
         <StyledLink to="/server">Server</StyledLink>
         <StyledLink to="/angular">Angular 2</StyledLink>
         <StyledLink to="/typescript">TypeScript</StyledLink>
+
+        <Divider/>
+
+        <StyledLink to="/vpn">VPN Server configuration</StyledLink>
+        <StyledLink to="/nginx">NGINX</StyledLink>
       </Wrap>
     );
   }

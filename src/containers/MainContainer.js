@@ -22,6 +22,8 @@ import CanvasPage from './CanvasPage';
 import OwaspPage from './OwaspPage';
 import AngularPage from './AngularPage';
 import TypeScriptPage from './TypeScriptPage';
+import VpnPage from './VpnPage';
+import NginxPage from './NginxPage';
 
 import styled from 'styled-components';
 
@@ -69,6 +71,8 @@ const AppRouter = () => (
       <Route path="/owasp" component={OwaspPage} />
       <Route path="/angular" component={AngularPage} />
       <Route path="/typescript" component={TypeScriptPage} />
+      <Route path="/vpn" component={VpnPage} />
+      <Route path="/nginx" component={NginxPage} />
     </Container>
   </Wrap>
 );

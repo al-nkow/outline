@@ -13,10 +13,17 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  monospace;
 }
 
 p {
   font-size: 16px;
   line-height: 24px;
+}
+
+a {
+  color: #456e98;
+  text-decoration: none;
+  margin: 5px;
+  font-weight: bold;
 }

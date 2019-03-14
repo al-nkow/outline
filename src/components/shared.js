@@ -1,5 +1,52 @@
+import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import styled from 'styled-components';
+
+export const NumTitle = styled(({ num, title, className }) => (
+  <div className={className}>
+    <span className="round">{num}</span> {title}
+  </div>
+))`
+  font-size: 18px;
+  font-weight: 600;
+  color: #456e98;
+  .round {
+    font-size: 16px;
+    margin-top: -3px;
+    font-weight: 600;
+    margin-right: 10px;
+    float: left;
+    width: 22px;
+    height: 22px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #456e98;
+  }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+`;
+
+export const Code = styled.span`
+  color: #88d883;
+  background: #2d2d2d;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 2px;
+  &.mr {
+    margin-right: 10px;
+  }
+  &.ml {
+    margin-left: 10px;
+  }
+`;
 
 export const Head = styled.h1`
   font-size: 26px;

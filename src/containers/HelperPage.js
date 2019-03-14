@@ -515,7 +515,7 @@ class HelperPage extends Component {
         </Block>
 
         <Block>
-          <SubHead>Могу ли я удалить удалить обработчик события с элемента?</SubHead>
+          <SubHead>Могу ли я удалить обработчик события с элемента?</SubHead>
           <p>
             Да. <b>target.removeEventListener('click', handler)</b>
           </p>
