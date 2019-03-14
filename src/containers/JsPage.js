@@ -8,6 +8,7 @@ import loopImg from '../images/eventloop.png';
 
 const Image = styled.img`
   display: block;
+  width: 100%;
   max-width: 400px;
 `;
 

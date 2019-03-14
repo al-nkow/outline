@@ -7,6 +7,7 @@ import CookieImg from '../images/cookie.png';
 import styled from 'styled-components';
 
 const Image = styled.img`
+  width: 100%;
   display: block;
   max-width: 400px;
   margin: 5px 0;
