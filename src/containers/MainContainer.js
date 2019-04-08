@@ -24,6 +24,8 @@ import AngularPage from './AngularPage';
 import TypeScriptPage from './TypeScriptPage';
 import VpnPage from './VpnPage';
 import NginxPage from './NginxPage';
+import WisebitsPage from './WisebitsPage';
+import DockerPage from './DockerPage';
 
 import styled from 'styled-components';
 
@@ -73,6 +75,8 @@ const AppRouter = () => (
       <Route path="/typescript" component={TypeScriptPage} />
       <Route path="/vpn" component={VpnPage} />
       <Route path="/nginx" component={NginxPage} />
+      <Route path="/wisebits" component={WisebitsPage} />
+      <Route path="/docker" component={DockerPage} />
     </Container>
   </Wrap>
 );

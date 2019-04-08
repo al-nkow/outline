@@ -34,7 +34,7 @@ export const NumTitle = styled(({ num, title, className }) => (
 export const Code = styled.span`
   color: #88d883;
   background: #2d2d2d;
-  padding: 5px 10px;
+  padding: 2px 10px;
   font-size: 14px;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   border-radius: 4px;

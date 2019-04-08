@@ -83,7 +83,7 @@ class VpnPage extends Component {
         <NumTitle num="5" title="Далее установим Node.js"/>
         <p>
           Через менеджер пакетов (via package manager) - инструкция по
-          <a href="https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions" target="_blank">этой</a>ссылке
+          <a href="https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions" target="_blank" rel="noopener noreferrer">этой</a>ссылке
           - просто копируем команды в консоль и выполняем
         </p>
         <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
@@ -140,9 +140,9 @@ class VpnPage extends Component {
         <NumTitle num="9" title="Установка MongoDB"/>
         <p>
           Установим MongoDB - для этого следуем
-          <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank">инструкции на официальном сайте</a>
+          <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="noopener noreferrer">инструкции на официальном сайте</a>
           - раздел <b>Install MongoDB Community Edition on Ubuntu</b><br/>
-          Или вот хорошая <a href="https://www.digitalocean.com/community/tutorials/mongodb-ubuntu-16-04-ru" target="_blank">инструкция</a>.
+          Или вот хорошая <a href="https://www.digitalocean.com/community/tutorials/mongodb-ubuntu-16-04-ru" target="_blank" rel="noopener noreferrer">инструкция</a>.
         </p>
         <p>
           Сначала необходимо импортировать ключ официального репозитория MongoDB<br/>

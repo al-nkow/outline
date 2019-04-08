@@ -76,6 +76,12 @@ class StartPage extends Component {
 
         <StyledLink to="/vpn">VPN Server configuration</StyledLink>
         <StyledLink to="/nginx">NGINX</StyledLink>
+        <StyledLink to="/docker">Docker</StyledLink>
+
+        <Divider/>
+
+        <StyledLink to="/wisebits">Wisebits</StyledLink>
+
       </Wrap>
     );
   }
