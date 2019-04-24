@@ -12,6 +12,9 @@ class LinuxPage extends PureComponent {
         <Head>Linux</Head>
         <p>
           <Code className="mr">rm -rf directory_name</Code> - удалить папку и все что в ней<br/>
+          <Code className="mr">cat /home/user/file</Code> - вывести содержимое файла<br/>
+          <Code className="mr">rm -Rf /home/user/dir</Code> - удалить директорию и все файлы внутри неё<br/>
+          <Code className="mr">rm /home/user/file</Code> - удалить файл<br/>
         </p>
       </div>
     );
