@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
@@ -232,7 +232,7 @@ window.onclick = function(event) {
 }
 `;
 
-class HelperPage extends Component {
+class HelperPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

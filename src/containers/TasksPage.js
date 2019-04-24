@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Important from '../components/Important';
 import {Head, SubHead, StyledSyntaxHighlighter} from '../components/shared';
 import {tomorrow} from 'react-syntax-highlighter/dist/styles/prism';
@@ -257,7 +257,7 @@ typeof null // "object" - это ошибка typeof но ее оставили 
 typeof function(){} // "function" - но на самом деле это объект
 `;
 
-class TasksPage extends Component {
+class TasksPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

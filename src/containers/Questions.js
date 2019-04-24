@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import Important from '../components/Important';
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
@@ -66,7 +66,7 @@ console.log(test());
 const code6 = `console.log(test.call(obj.prop));
 `;
 
-class QuestionsPage extends Component {
+class QuestionsPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

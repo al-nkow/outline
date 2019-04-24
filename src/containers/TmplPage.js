@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Important from '../components/Important';
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
@@ -101,7 +101,7 @@ const code7 = `var Adam = new User(chatMediator, 'Adam');
 const code8 = `carManager.execute('requestInfo', 'Ford', 'k759px');
 `;
 
-class TmplPage extends Component {
+class TmplPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

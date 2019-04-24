@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Image, Head } from '../components/shared';
 import ts1 from '../images/ts1.jpg';
 import ts2 from '../images/ts2.jpg';
@@ -11,7 +11,7 @@ import ts8 from '../images/ts8.jpg';
 import ts9 from '../images/ts9.jpg';
 import ts10 from '../images/ts10.jpg';
 
-class TypeScriptPage extends Component {
+class TypeScriptPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

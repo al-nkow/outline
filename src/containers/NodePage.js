@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Head, SubHead } from '../components/shared';
 
-class NodePage extends Component {
+class NodePage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

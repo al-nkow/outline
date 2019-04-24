@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Important from '../components/Important';
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
@@ -37,7 +37,7 @@ const code2 = `<section>
 <time>1957-10-04</time>
 `;
 
-class CommonQuestions extends Component {
+class CommonQuestions extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -167,14 +167,6 @@ console.log(test); // undeclarated - Uncaught ReferenceError: test is not define
 `}
 </StyledSyntaxHighlighter>
         </Block>
-
-
-
-
-
-
-
-
         <Block>
           <SubHead>Арность</SubHead>
           <p>

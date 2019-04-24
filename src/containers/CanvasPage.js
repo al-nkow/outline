@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
@@ -58,7 +58,7 @@ const code4 = `d3.select('body').selectAll('p') // будем работать �
   .text(function(d) { return d; }) // вставляем данные в p
 `;
 
-class CanvasPage extends Component {
+class CanvasPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

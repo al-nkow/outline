@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import styled from 'styled-components';
 
@@ -43,7 +43,7 @@ const myFunc = function(...rest) {
 Array.from(arguments).reverse();
 `;
 
-class JsPage extends Component {
+class JsPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

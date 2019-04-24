@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import Important from '../components/Important';
 import { Block, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
@@ -85,7 +85,7 @@ overflow: hidden;
 text-overflow: ellipsis;
 `;
 
-class ScssPage extends Component {
+class ScssPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

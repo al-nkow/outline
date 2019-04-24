@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
 import Important from '../components/Important';
@@ -249,7 +249,7 @@ clicks.forEach(function(e) {
 });
 `;
 
-class Cmpnt extends Component {
+class Cmpnt extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

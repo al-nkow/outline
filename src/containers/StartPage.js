@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -27,7 +27,7 @@ const Divider = styled.div`
     margin: 20px 0;
 `;
 
-class StartPage extends Component {
+class StartPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

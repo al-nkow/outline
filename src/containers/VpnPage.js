@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {Head, StyledSyntaxHighlighter, SubHead, Code, NumTitle} from '../components/shared';
 import Important from '../components/Important';
 import {tomorrow} from 'react-syntax-highlighter/dist/styles/prism';
@@ -45,7 +45,7 @@ pm2 startup systemd
 pm2 save
 `;
 
-class VpnPage extends Component {
+class VpnPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
 import Important from '../components/Important';
@@ -16,7 +16,7 @@ const Image = styled.img`
 const code1 = `var socket = new WebSocket("ws://javascript.ru/ws");
 `;
 
-class ApiPage extends Component {
+class ApiPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

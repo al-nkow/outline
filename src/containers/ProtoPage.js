@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 import Important from '../components/Important';
@@ -60,7 +60,7 @@ class Rabbit extends Animal {
 `;
 
 
-class ProtoPage extends Component {
+class ProtoPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Image, Head } from '../components/shared';
 import ang1 from '../images/ang1.jpg';
 import ang2 from '../images/ang2.jpg';
@@ -13,7 +13,7 @@ import ang10 from '../images/ang10.jpg';
 import ang11 from '../images/ang11.jpg';
 import ang12 from '../images/ang12.jpg';
 
-class AngularPage extends Component {
+class AngularPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

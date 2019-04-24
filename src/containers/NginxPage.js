@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Code, Head, SubHead, Block, StyledSyntaxHighlighter } from '../components/shared';
 import NginxImg from '../images/nginx1.jpg';
 import NginxImg2 from '../images/nginx2.jpg';
@@ -182,7 +182,7 @@ server {
     resolver 8.8.8.8;
 }`;
 
-class NginxPage extends Component {
+class NginxPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -288,7 +288,7 @@ class NginxPage extends Component {
         <Block>
           <Head>Подключение SSL сертификата, настройка https</Head>
           <p>
-            1. Заходим на сайт <a href="https://certbot.eff.org/" target="_blank">https://certbot.eff.org/</a>
+            1. Заходим на сайт <a href="https://certbot.eff.org/" target="_blank" rel="noopener noreferrer">https://certbot.eff.org/</a>
             и устанавливаем согласно инструкции<br/>
             <Code>sudo apt-get update</Code><br/>
             <Code>sudo apt-get install software-properties-common</Code><br/>

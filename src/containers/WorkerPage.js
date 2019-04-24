@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import Important from '../components/Important';
 import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
@@ -16,7 +16,7 @@ const code2 = `if ('serviceWorker' in navigator) {
 }
 `;
 
-class WorkerPage extends Component {
+class WorkerPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Point, Head, StyledSyntaxHighlighter } from '../components/shared';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
@@ -34,7 +34,7 @@ const code4 = `const mapDispatchToProps = dispatch => ({
 // setYear - это action creator
 `;
 
-class ReduxPage extends Component {
+class ReduxPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

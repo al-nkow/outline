@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Head, SubHead, Code } from '../components/shared';
 import Statistic from '../components/statistic';
 
-class WisebitsPage extends Component {
+class WisebitsPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

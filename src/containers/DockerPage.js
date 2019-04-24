@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Head, Code, SubHead, Block } from '../components/shared';
 import Important from '../components/Important';
 
-class DockerPage extends Component {
+class DockerPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

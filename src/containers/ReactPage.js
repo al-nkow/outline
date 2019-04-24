@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Mark, Point, Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
@@ -33,7 +33,7 @@ const code4 = `class MyComponent extends React.Component {
 <input value="456" ref={(node) => { this.inputEl = node; }} />
 `;
 
-class ReactPage extends Component {
+class ReactPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

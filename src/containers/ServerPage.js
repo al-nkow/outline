@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 import { Head, SubHead, StyledSyntaxHighlighter } from '../components/shared';
 
@@ -6,7 +6,7 @@ const code1 = `sudo /etc/init.d/nginx start
 // stop чтобы остановить
 `;
 
-class ServerPage extends Component {
+class ServerPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }

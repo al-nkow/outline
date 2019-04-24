@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-class NavBar extends Component {
+class NavBar extends PureComponent {
   render () {
     return (
       <Wrap>

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Head, SubHead } from '../components/shared';
 
-class SolidPage extends Component {
+class SolidPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
   }
