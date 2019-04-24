@@ -10,7 +10,7 @@ const Icon = styled.svg`
   top: 0;
 `;
 
-const Wrap = styled.div`
+const Wrap = styled.span`
   padding-left: 40px;
   min-height: 30px;
   position: relative;
@@ -39,7 +39,7 @@ export default function ({children}) {
           </g>
         </g>
       </Icon>
-      <div>{children}</div>
+      <span>{children}</span>
     </Wrap>
   );
 }
