@@ -145,7 +145,7 @@ server {
         alias /home/alex/www/SITE_ADMIN/build;
         
         if (!-e $request_filename){
-            rewrite ^(.*)$ /test/index.html last;
+            rewrite ^(.*)$ /admin/index.html last;
         }
     }
 
