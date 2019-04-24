@@ -1,5 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import styled from 'styled-components';
+
 import StartPage from './StartPage';
 import AsyncPage from './AsyncPage';
 import TasksPage from './TasksPage';
@@ -26,8 +28,10 @@ import VpnPage from './VpnPage';
 import NginxPage from './NginxPage';
 import WisebitsPage from './WisebitsPage';
 import DockerPage from './DockerPage';
-
-import styled from 'styled-components';
+import SnippetPage from './SnippetPage';
+import MongoPage from './MongoPage';
+import GitPage from './GitPage';
+import LinuxPage from './LinuxPage';
 
 const Wrap = styled.div`
   padding-top: 60px;
@@ -77,6 +81,10 @@ const AppRouter = () => (
       <Route path="/nginx" component={NginxPage} />
       <Route path="/wisebits" component={WisebitsPage} />
       <Route path="/docker" component={DockerPage} />
+      <Route path="/snippet" component={SnippetPage} />
+      <Route path="/mongo" component={MongoPage} />
+      <Route path="/git" component={GitPage} />
+      <Route path="/linux" component={LinuxPage} />
     </Container>
   </Wrap>
 );

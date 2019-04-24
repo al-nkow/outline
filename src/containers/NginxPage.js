@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {Code, Head, SubHead, Block, StyledSyntaxHighlighter} from '../components/shared';
+import { Code, Head, SubHead, Block, StyledSyntaxHighlighter } from '../components/shared';
 import NginxImg from '../images/nginx1.jpg';
 import NginxImg2 from '../images/nginx2.jpg';
 import Important from '../components/Important';
 import styled from 'styled-components';
-import {tomorrow} from 'react-syntax-highlighter/dist/styles/prism';
+import { tomorrow } from 'react-syntax-highlighter/dist/styles/prism';
 
 const Image = styled.img`
   width: 100%;

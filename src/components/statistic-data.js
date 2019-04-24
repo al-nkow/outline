@@ -172,7 +172,7 @@ export const menu = [
           {
             name: 'Custom',
             tmpAddr: 'static/js/MainApp/parts/dsp_statistic/',
-            tmpName: 'custom.html',
+            tmpName: 'stats.html',
           },
         ]
       }

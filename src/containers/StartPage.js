@@ -77,9 +77,13 @@ class StartPage extends Component {
         <StyledLink to="/vpn">VPN Server configuration</StyledLink>
         <StyledLink to="/nginx">NGINX</StyledLink>
         <StyledLink to="/docker">Docker</StyledLink>
+        <StyledLink to="/mongo">MongoDB</StyledLink>
+        <StyledLink to="/linux">Linux</StyledLink>
 
         <Divider/>
 
+        <StyledLink to="/git">Git</StyledLink>
+        <StyledLink to="/snippet">Snippet</StyledLink>
         <StyledLink to="/wisebits">Wisebits</StyledLink>
 
       </Wrap>
