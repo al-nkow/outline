@@ -217,7 +217,7 @@ export const menu = [
           {
             name: 'Device',
             tmpAddr: 'static/js/MainApp/parts/advertiser/',
-            tmpName: 'app.html',
+            tmpName: 'device.html',
           },
           {
             name: 'OS',
