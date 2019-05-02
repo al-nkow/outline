@@ -49,7 +49,7 @@ class MongoPage extends PureComponent {
           </p>
         </Block>
         <Block>
-          <SubHead>Скопирвать базу с сервера и развернуть у себя</SubHead>
+          <SubHead>Скопировать базу с сервера и развернуть у себя</SubHead>
           <p>
             1. создаем папку <b>mkdir foldername</b> куда будем сохранять дамп базы, заходим в нее в терминале <b>cd foldername</b><br/>
             2. выполнить: <Code>mongodump -h hrportal.bkz:27017 -d hrbase -u "admin@bzgmail.com" -p "soMe01PassWoRD" --authenticationDatabase admin</Code><br/>
@@ -58,7 +58,7 @@ class MongoPage extends PureComponent {
         </Block>
         <p>
           <Code className="mr">mongodump --db database_name</Code> - создаст дамп базы данных в текущей папке (где терминал открыт)<br/>
-          <Code>scp -P 2612 -r alex@186.20.221.106:/home/alex/dump /Users/aleksey/projects/LOCALFOLDER</Code><br/>
+          <Code>scp -P 2216 -r petya@186.21.232.109:/home/alex/dump /Users/aleksey/projects/LOCALFOLDER</Code><br/>
           <Code>mongorestore --drop -d myapi /dump/myapi</Code>
         </p>
       </div>
