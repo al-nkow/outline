@@ -81,7 +81,7 @@ const code2 = `(function () {
         });
   
         scope.onchange = function() {
-          var regexp = /[^\\d\\s.,\\-_]/g;
+          var regexp = /[^\\d\\s.,\\-_]/g; // только числа и допустимые разделители .,-_ а также пробел и перенос строки
   
           if (!scope.model) {
             scope.ngModel = [];
@@ -94,7 +94,7 @@ const code2 = `(function () {
           };
   
           function setModelValue(str) {
-            var stringModel = str.replace(/[^0-9]{1,}/g, ' ');
+            var stringModel = str.replace(/[^0-9]{1,}/g, ' '); // все нечисла и множественные пробелы заменить на одиеночный пробел
             var model = [];
             stringModel.split(' ').forEach(function(item) {
               if (+item) model.push(+item);
