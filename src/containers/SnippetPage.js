@@ -51,6 +51,62 @@ var root = MiracleGrow(treeData, "id", "parent")
 console.log(root)
 `;
 
+const code2 = `(function () {
+  advertiserApp
+    .directive('areaIds', areaIds);
+  
+  function areaIds() {
+    return {
+      restrict: 'AE',
+      scope: {
+        ngModel: '=',
+        required: '=',
+        disabled: '=',
+        placeholder: '@'
+      },
+      template: '<div>' +
+        '<textarea style="resize: vertical; " class="form-control" placeholder="{{ placeholder }}"' +
+        'rows="5" ng-model="model" ng-change="onchange($event)" ng-required="required" ng-disabled="disabled">' +
+        '</textarea>' +
+        '<span ng-if="note && !ngModel.length" class="no-fill">{{ note }}</span>' +
+        '</div>',
+      link: function (scope, el, attrs) {
+        var lastValue = [];
+        scope.note = attrs.note;
+  
+        scope.$watch('ngModel', function() {
+          if (scope.ngModel && lastValue && scope.ngModel.join(' ') !== lastValue.join(' ')) {
+            scope.model = scope.ngModel.join(', ');
+          }
+        });
+  
+        scope.onchange = function() {
+          var regexp = /[^\\d\\s.,\\-_]/g;
+  
+          if (!scope.model) {
+            scope.ngModel = [];
+            return;
+          }
+  
+          if (scope.model.match(regexp)) scope.model = scope.model.replace(regexp, '');
+            scope.ngModel = setModelValue(scope.model);
+            lastValue = scope.ngModel.slice();
+          };
+  
+          function setModelValue(str) {
+            var stringModel = str.replace(/[^0-9]{1,}/g, ' ');
+            var model = [];
+            stringModel.split(' ').forEach(function(item) {
+              if (+item) model.push(+item);
+            });
+            return model;
+          }  
+        }
+      };
+    }
+})();
+`;
+
 class NginxPage extends PureComponent {
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -67,6 +123,14 @@ class NginxPage extends PureComponent {
         </p>
         <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
           {code1}
+        </StyledSyntaxHighlighter>
+        <SubHead>AngularJS компонент textarea для ввода ID</SubHead>
+        <p>
+          Айдишники можно вводить с различными разделителями - с новой строки, через запятую точку или тире, через нижнее подчеркивание.
+          В результате в модель записывается массив чисел. Разрешен ввод только чисел и допустимых разделителей.
+        </p>
+        <StyledSyntaxHighlighter language='javascript' style={tomorrow}>
+          {code2}
         </StyledSyntaxHighlighter>
       </div>
     );
