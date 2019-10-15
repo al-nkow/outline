@@ -17,6 +17,10 @@ class GitPage extends PureComponent {
           <Code className="mr">git branch -d <b>имя_ветки</b></Code> - удалить ветку из локального Git-репозитория<br/>
           <Code className="mr">git push origin --delete <b>имя_ветки</b></Code> - удалить ветку из удаленного Git-репозитория<br/>
         </p>
+        <p>
+          <Code className="mr">git update-index --assume-unchanged path/to/file.txt</Code> - перестать отслеживать файл (он не попадет больше в git status)<br/>
+          <Code className="mr">git update-index --no-assume-unchanged path/to/file.txt</Code> - начать опять отслеживать изменения в файле<br/>
+        </p>
       </div>
     );
   }
