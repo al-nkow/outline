@@ -133,7 +133,7 @@ let data = {
 
 let fetchData = { 
     method: 'POST', 
-    body: data,
+    body: JSON.stringify(data),
     headers: myHeaders
 }
 
