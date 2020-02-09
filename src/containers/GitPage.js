@@ -21,6 +21,12 @@ class GitPage extends PureComponent {
           <Code className="mr">git update-index --assume-unchanged path/to/file.txt</Code> - перестать отслеживать файл (он не попадет больше в git status)<br/>
           <Code className="mr">git update-index --no-assume-unchanged path/to/file.txt</Code> - начать опять отслеживать изменения в файле<br/>
         </p>
+        <p>
+          Чтобы удалить файл из репозитория но при этом чтобы он остался локально и git больше не отслеживал его изменения:<br />
+          1. Добавить этот файл в <b>.gitignore</b><br />
+          2. Удалить из истории:<br/>
+          <Code className="mr">git rm --cached folder/fileName.js</Code><br/>
+        </p>
       </div>
     );
   }
