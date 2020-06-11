@@ -32,6 +32,8 @@ import SnippetPage from './SnippetPage';
 import MongoPage from './MongoPage';
 import GitPage from './GitPage';
 import LinuxPage from './LinuxPage';
+import TestingPage from  './TestingPage';
+import Typescript from  './TypescriptLast';
 
 const Wrap = styled.div`
   padding-top: 60px;
@@ -85,6 +87,8 @@ const AppRouter = () => (
       <Route path="/mongo" component={MongoPage} />
       <Route path="/git" component={GitPage} />
       <Route path="/linux" component={LinuxPage} />
+      <Route path="/testing" component={TestingPage} />
+      <Route path="/typescriptnew" component={Typescript}/>
     </Container>
   </Wrap>
 );

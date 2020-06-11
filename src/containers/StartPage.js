@@ -35,6 +35,11 @@ class StartPage extends PureComponent {
   render () {
     return (
       <Wrap>
+        <StyledLink to="/testing">Testing</StyledLink>
+        <StyledLink to="/typescriptnew">Typescript essentials</StyledLink>
+
+        <Divider/>
+
         <StyledLink to="/common">Общие вопросы</StyledLink>
         <StyledLink to="/scss">SCSS SASS LESS STYLUS</StyledLink>
         <StyledLink to="/canvas">SVG Canvas D3</StyledLink>
