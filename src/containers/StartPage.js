@@ -35,6 +35,15 @@ class StartPage extends PureComponent {
   render () {
     return (
       <Wrap>
+
+        <StyledLink to="/react-native">1. React Native</StyledLink>
+
+        <Divider/>
+
+        <StyledLink to="/wwpage">1. Web Workers</StyledLink>
+
+        <Divider/>
+
         <StyledLink to="/testing">Testing</StyledLink>
         <StyledLink to="/typescriptnew">Typescript essentials</StyledLink>
 

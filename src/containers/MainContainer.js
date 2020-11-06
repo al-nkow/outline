@@ -34,6 +34,8 @@ import GitPage from './GitPage';
 import LinuxPage from './LinuxPage';
 import TestingPage from  './TestingPage';
 import Typescript from  './TypescriptLast';
+import WebworkersPage from './WebworkersPage';
+import ReactNativePage from './ReactNativePage';
 
 const Wrap = styled.div`
   padding-top: 60px;
@@ -89,6 +91,8 @@ const AppRouter = () => (
       <Route path="/linux" component={LinuxPage} />
       <Route path="/testing" component={TestingPage} />
       <Route path="/typescriptnew" component={Typescript}/>
+      <Route path="/wwpage" component={WebworkersPage}/>
+      <Route path="/react-native" component={ReactNativePage}/>
     </Container>
   </Wrap>
 );
