@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { Head, SubHead, Code, Block } from '../components/shared';
-import CodeBlock from '../components/Code';
+// import CodeBlock from '../components/Code';
 
 const ReactNative = () => {
   useLayoutEffect(() => {

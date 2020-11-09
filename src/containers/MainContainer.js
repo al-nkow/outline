@@ -36,6 +36,8 @@ import TestingPage from  './TestingPage';
 import Typescript from  './TypescriptLast';
 import WebworkersPage from './WebworkersPage';
 import ReactNativePage from './ReactNativePage';
+import StuffPage from './Stuff';
+import Algorithms from './Algorithms';
 
 const Wrap = styled.div`
   padding-top: 60px;
@@ -93,6 +95,8 @@ const AppRouter = () => (
       <Route path="/typescriptnew" component={Typescript}/>
       <Route path="/wwpage" component={WebworkersPage}/>
       <Route path="/react-native" component={ReactNativePage}/>
+      <Route path="/stuff" component={StuffPage}/>
+      <Route path="/data" component={Algorithms}/>
     </Container>
   </Wrap>
 );

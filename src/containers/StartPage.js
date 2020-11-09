@@ -37,6 +37,8 @@ class StartPage extends PureComponent {
       <Wrap>
 
         <StyledLink to="/react-native">1. React Native</StyledLink>
+        <StyledLink to="/data">2. Алгоритмы и структуры данных</StyledLink>
+        <StyledLink to="/stuff">3. Различные вопросы</StyledLink>
 
         <Divider/>
 
