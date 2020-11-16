@@ -208,7 +208,7 @@ printList(list);
           <Code className="mr">indexOf/includes</Code> - O(n)<br />
           Можно превратить в hash table - O(n+1) - перебрать и обратиться по индексу<br />
           Отсортировать массив! - алгоритмы в отсортированном массиве работают быстрее!
-          И искать - тогда будет O(n * log(n) + log(n)) => O(n * log(n))<br />
+          И искать - тогда будет O(n * log(n) + log(n)) {'=>'} O(n * log(n))<br />
           И наконец бинарное дерево - O(log(n))
         </p>
         <BinTreeImg src={treePng} alt="" />
@@ -228,6 +228,186 @@ printList(list);
 }
 `}
 </CodeBlock>
+        <Important>
+          Если в коде появилась куча if/else для того чтобы найти/записать/проверить - значит пора задуматься о 
+          структуре данных
+        </Important>
+      </Block>
+      <Head>
+        Базовый набор JavaScript алгоритмов
+      </Head>
+      <p>
+        Все примеры в этом блоке соблюдают принципы неизменности. Исходный объект не изменяется! Вместо этого мы будем
+        возвращать новый объект с необходимыми свойствами.
+      </p>
+      <Block>
+        <SubHead>Уникальный массив</SubHead>
+<CodeBlock>{`const numbers = [1, 2, 1, 1, 2, 1, 3, 4, 1 ]
+const uniq = [...new Set(numbers)] // => [ 1, 2, 3, 4 ]
+const uniq2 = Array.from(new Set(numbers)) // => [ 1, 2, 3, 4 ]
+`}</CodeBlock>
+        <p>у Set есть такие полезные методы как <b>size</b> и <b>has</b></p>
+      </Block>
+      <Block>
+        <SubHead>Обновление объекта в массиве по свойству</SubHead>
+<CodeBlock>{`const initial = [ { id: 1, score: 1 }, { id: 2, score: 2 }, { id: 3, score: 4 } ];
+const newValue = { id: 3, score: 3 };
+const updated = initial.map(x => x.id === newValue.id ? newValue : x);
+console.log(updated) // => [ { id: 1, score: 1 }, { id: 2, score: 2 }, { id: 3, score: 3 } ];
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Удаление объекта из массива по свойству</SubHead>
+<CodeBlock>{`const removeId = 3
+const without3 = initial.filter(x => x.id !== removeId)
+console.log(without3) // => [ { id: 1, score: 1  }, { id: 2, score: 2  }  ]
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Удаления ключа из объекта</SubHead>
+        <p>Мы можем использовать деструктуризацию в обратном направлении</p>
+<CodeBlock>{`const a = {
+  foo: 'bar',
+  useful: 1,
+  useless: 2,
+}
+
+const {useless, ...clean} = a;
+console.log(clean); // { foo: 'bar', useful: 1 }
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Объединение массива объектов</SubHead>
+<CodeBlock>{`// merge an array of objects
+const data = [ {a: 1}, {b: 2}, {c: 3} ]
+const merged = data.reduce((res, obj) => ({...res, ...obj}), {})
+console.log(merged) // => { a: 1, b: 2, c: 3  }
+
+// merge an array of objects by property
+const toMerge = [
+  { id: 1, value: 'a', },
+  { id: 2, value: 'b', },
+  { id: 3, value: 'c' },
+  { id: 1, score: 1 },
+  { id: 2, score: '2' },
+]
+const mergedByProperty = toMerge.reduce((result, obj) => ({
+  ...result,
+  [obj.id]: {
+    ...result[obj.id],
+    ...obj
+  }
+}), {})
+console.log(mergedByProperty) // =>
+/*
+ *{ '1': { id: 1, value: 'a', score: 1 },
+ *  '2': { id: 2, value: 'b', score: '2' },
+ *  '3': { id: 3, value: 'c' } }
+ */
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Преобразование многомерного массива в одномерный</SubHead>
+<CodeBlock>{`const arrayOfArray = [ [1, 2], [3, 4], [[5, 6]] ]
+const flattened = arrayOfArray.reduce((res, a) => [...res, ...a], [] )
+console.log(flattened) // => [1, 2, 3, 4, [5, 6]]
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Преобразование массива в объект из пар ключ-значение</SubHead>
+<CodeBlock>{`// fromPairs
+const pairs = [['a', 1], ['b', 2], ['c', 3]]
+const asObjects = pairs
+  .reduce((res, [key, value]) => ({ ...res, [key]: value }), {})
+
+// Or event smarter
+const asObjects2 = { ...(new Map(pairs)) }
+
+console.log(asObjects) // => { a: 1, b: 2, c: 3  }
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Удаление повторяющихся элементов из двух массивов</SubHead>
+<CodeBlock>{`// subtract two sets
+const s1 = [ 1, 2, 3, 4, 5 ]
+const s2 = [ 2, 4 ]
+const subtracted = s1.filter(x => s2.indexOf(x) < 0)
+console.log(subtracted) // [1, 3, 5]
+`}</CodeBlock>
+      </Block>
+      <Head>Основные алгоритмы</Head>
+      <Block>
+        <SubHead>Линейный поиск</SubHead>
+        <p>
+          Поиск перебором элементов. Просматриваются все один за другим, пока не будет найден искомый элемент. алгоритм 
+          линейного поиска не должен использовать отсортированный список.
+        </p>
+<CodeBlock>{`function linearSearch(value, list) {
+    let found = false; // флаг, сигнализирующий о том, что значение найдено
+    let position = -1; // позиция, в которой значение найдено, или -1, если нет такого значения
+    let index = 0;
+ 
+    // пока значение не найдено или индекс меньше длины массива
+    while(!found && index < list.length) {
+      // если значение найдено
+      if(list[index] == value) {
+        found = true;     // флаг = истина
+        position = index; // позиция равна индексу элемента в массиве
+      } else {
+        index += 1;
+      }
+    }
+
+    return position;
+}
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Бинарный поиск</SubHead>
+        <p>
+          Подход "Разделяй и властвуй". Работает только на отсортированном массиве. Мы делим массив пополам и смотрим, в
+          какой половине находится искомый элемент, затем делим эту половину пополам, затем половину от половины и так 
+          далее пока не найдем. По аналогии с телефонным справочником.
+        </p>
+<CodeBlock>{`const binarySearch = (array, item) => {
+  let low = 0;
+  let high = array.length - 1;
+ 
+  while(low <= high) {
+  	let middle = parseInt((high + low) / 2); // Math.floor((start + end) / 2);
+    let value = array[middle];
+ 
+  	if (value === item) {
+      return value;
+    }
+ 
+    if (value > item) {
+      high = middle - 1;
+    } else {
+      low = middle + 1;
+    }
+  }
+ 
+  return null;
+};
+ 
+const array = [1, 2, 3, 4, 5, 6];
+const item = 2;
+ 
+binarySearch(array, item);
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Сортировка пузырьком</SubHead>
+        <p>
+          Сортировку пузырьком (Bubble Sort) также иногда называют сортировкой простыми обменами. Алгоритм не является 
+          эффективным, имеет сложность <b>O(n²)</b> и на практике не используется. Суть алгоритма в сравнении
+          пары соседних элементов — если они стоят в неправильном порядке, то их меняют местами. Чтобы отсортировать
+          таким образом весь массив длиной N, придется пройтись по нему N-1 раз (последний элемент уже будет
+          отсортирован на предыдущей итерации, поэтому для него проход не требуется). Также за каждый проход в конец 
+          массива “всплывает” при сортировке по возрастанию — наибольшее число, по убыванию — наименьшее. А значит на 
+          следующей итерации его можно уже не проверять.
+        </p>
       </Block>
     </>
   );
