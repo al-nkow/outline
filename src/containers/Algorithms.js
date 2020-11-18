@@ -5,8 +5,11 @@ import Important from '../components/Important';
 import CodeBlock from '../components/Code';
 
 import treePng from '../images/tree.png';
+import bubbleGif from '../images/bubble.gif';
+import selectPng from '../images/selectsort.gif';
+import insertGif from '../images/insertsort.gif';
 
-const BinTreeImg = styled.img`
+const Image = styled.img`
   width: 200px;
 `;
 
@@ -211,7 +214,7 @@ printList(list);
           И искать - тогда будет O(n * log(n) + log(n)) {'=>'} O(n * log(n))<br />
           И наконец бинарное дерево - O(log(n))
         </p>
-        <BinTreeImg src={treePng} alt="" />
+        <Image src={treePng} alt="" />
 <CodeBlock>{`function binarySearch(arr, item)){
   while (arr.length !== 1) {
     let pivotIndex = Math.floor(arr.length/2);
@@ -407,6 +410,99 @@ binarySearch(array, item);
           отсортирован на предыдущей итерации, поэтому для него проход не требуется). Также за каждый проход в конец 
           массива “всплывает” при сортировке по возрастанию — наибольшее число, по убыванию — наименьшее. А значит на 
           следующей итерации его можно уже не проверять.
+        </p>
+        <Image src={bubbleGif} alt="" />
+<CodeBlock>{`const bubbleSort = arr => {
+  const last = arr.length - 1;
+
+  for (let i = 0; i < last; i++) {
+    let wasSwap = false;
+
+    for (let j = 0, endJ = last - i; j < endJ; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        wasSwap = true;
+      }
+    }
+    
+    if (!wasSwap) break; // если прошли по циклу и ничего не поменяли - значит уже отсортирован
+  }
+  return arr;
+};
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Сортировка выбором</SubHead>
+        <p>
+          Сортировка выбором осуществляется путем непрерывного выбора наименьшего значения и перемещения его к одному 
+          концу. Сложность <b>O(N²)</b>
+        </p>
+        <p>
+          Суть алгоритма — за каждый проход по массиву выбрать минимальный элемент (для сортировки по возрастанию) и 
+          поменять его местами с первым элементом в еще не отсортированном участке массива
+        </p>
+        <Image src={selectPng} alt="" />
+<CodeBlock>{`const selectionSort = arr => {
+  const arrLength = arr.length;
+
+  for (let i = 0; i < arrLength - 1; i++) {
+    let indexMin = i;
+
+    for (let j = i + 1; j < arrLength; j++) {
+      if (arr[indexMin] > arr[j]) {
+        indexMin = j;
+      }
+    }
+
+    if (indexMin !== i) { // если в первой позиции минимальный элемент - то просто не надо ничего менять
+      [arr[i], arr[indexMin]] = [arr[indexMin], arr[i]];
+    }
+  }
+  return arr;
+};
+`}</CodeBlock>
+        <p>
+          Но эта сортировка является неустойчивой! Отличие устойчивых сортировок от неустойчивых в том, что если 
+          сравниваются не просто значения, а объекты по какому-то из свойств (массив объектов и сортируем по ключу), то 
+          устойчивая сортировка оставит объекты с одинаковым ключом в том же порядке, в котором они были, а неустойчивая
+          перемешает.
+        </p>
+      </Block>
+      <Block>
+        <SubHead>Сортировка вставкой</SubHead>
+        <p>
+          Рассмотрим сортировку по возрастанию. Суть алгоритма заключается в том, что в цикле один за другим выбираются 
+          элементы массива и сравниваются с элементами, стоящими перед ними, до тех пор пока не будет найдет элемент, 
+          меньший текущего, или мы не дойдем до начала массива. Перед ним мы и вставляем текущий, для этого 
+          предварительно сдвинув все элементы, которые оказались больше текущего, в сторону увеличения на один индекс.
+        </p>
+        <p>
+          Алгоритм имеет сложность O(n²) только для худшего случая (массива, отсортированного в обратном порядке), а 
+          для лучшего случая сложность будет O(n) — достаточно одного прохода, чтобы понять что массив отсортирован. Но 
+          все равно не стоит использовать этот алгоритм в работе (как и выбор с пузырьком)!
+        </p>
+        <Image src={insertGif} alt="" />
+<CodeBlock>{`const insertionSort = arr => {
+    const arrLength = arr.length;
+
+    for (let i = 1; i < arrLength; i++) {
+        const current = arr[i];
+
+        let j = i;
+        while (j > 0 && arr[j - 1] > current) {
+            arr[j] = arr[j - 1];
+            j--;
+        }
+        arr[j] = current;
+    }
+    return arr;
+};
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Сортировка слиянием (Merge sort)</SubHead>
+        <p>
+          
         </p>
       </Block>
     </>
