@@ -8,9 +8,15 @@ import treePng from '../images/tree.png';
 import bubbleGif from '../images/bubble.gif';
 import selectPng from '../images/selectsort.gif';
 import insertGif from '../images/insertsort.gif';
+import mergeGif from '../images/mergesort.gif';
+import fastGif from '../images/fastsort.gif';
 
 const Image = styled.img`
   width: 200px;
+`;
+
+const ImageLarge = styled.img`
+  width: 320px;
 `;
 
 const Stuff = () => {
@@ -502,7 +508,132 @@ binarySearch(array, item);
       <Block>
         <SubHead>Сортировка слиянием (Merge sort)</SubHead>
         <p>
-          
+          Временная сложность в наилучшем и наихудшем случае — <b>O(N Log N)</b>. Алгоритм сортировки слиянием это один из 
+          алгоритмов «разделяй и властвуй». Другими словами, он делит исходный массив на более мелкие массивы, пока 
+          каждый маленький массив не будет содержать всего одну позицию, а затем сливает маленькие массивы в более 
+          крупный и отсортированный.
+        </p>
+        <Image src={mergeGif} alt="" />
+<CodeBlock>{`const merge = (arrFirst, arrSecond) => {
+    const arrSort = [];
+    let i = j = 0;
+    // сравниваем два массива, поочередно сдвигая указатели
+    while (i < arrFirst.length && j < arrSecond.length) {
+        arrSort.push(
+            (arrFirst[i] < arrSecond[j]) ?
+                arrFirst[i++] : arrSecond[j++]
+        );
+    }
+    // обрабатываем последний элемент при разной длине массивов
+    // и возвращаем один отсортированный массив
+    return [
+        ...arrSort,
+        ...arrFirst.slice(i),
+        ...arrSecond.slice(j)
+    ];
+};
+
+/*
+А теперь в основной функции mergeSort реализуем разделение массива, рекурсивный 
+вызов функции сортировки и слияние опять в один массив с помощью уже созданной 
+функции merge:
+*/
+
+const mergeSort = arr => {
+  // Проверяем корректность переданных данных
+  if (!arr || !arr.length) {
+      return null;
+  }
+  //Если массив содержит один элемент просто возвращаем его
+  if (arr.length <= 1) {
+      return arr;
+  }
+  // Находим середину массива и делим его на два
+  const middle = Math.floor(arr.length / 2);
+  const arrLeft = arr.slice(0, middle);
+  const arrRight = arr.slice(middle);
+  // Для новых массивов снова вызываем сортировку,
+  // сливаем их и возвращаем снова единый массив
+  return merge(mergeSort(arrLeft), mergeSort(arrRight));;
+};
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Быстрая сортировка</SubHead>
+        <p>
+          Временная сложность в наилучшем/среднем случае — <b>O(N Log N)</b>, в наихудшем — <b>O(N^2)</b>.
+          Как и сортировка слиянием использует принцип "разделяй и влавствуй".
+        </p>
+        <Important>
+          Quicksort, как правило, считается самой эффективной и быстрой и поэтому используется в V8 как реализация 
+          Array.prototype.sort() для массивов с более чем 23 элементами. Для менее чем 23 элемента в V8 используется 
+          insertion sort2. Merge sort - конкурент quicksort, аналогично ему он также эффективный и быстрый, но имеет 
+          дополнительное преимущество - устойчивость. Поэтому Mozilla и Safari используют его для имплементации 
+          Array.prototype.sort().
+        </Important>
+        <p>
+          1. Выбираем значение в массиве, которое назовем опорным. Обычно это значение в середине массива.<br/>
+          2. Осуществляем операцию распределения, в результате которой значения меньше опорного смещаются влево от 
+          опорного, а большие — вправо от него.<br/>
+          3. Повторяем первые два шага для каждого подмассива (левого и правого), пока массивы не будут полностью 
+          отсортированы.<br/>
+        </p>
+        <ImageLarge src={fastGif} />
+<CodeBlock>{`// Функция разделитель сама по себе довольно проста
+function partition(items, left, right) {
+  var pivot = items[Math.floor((right + left) / 2)],
+    i       = left,
+    j       = right;
+  while (i <= j) {
+    while (items[i] < pivot) {
+      i++;
+    }
+    while (items[j] > pivot) {
+      j--;
+    }
+    if (i <= j) {
+      swap(items, i, j);
+      i++;
+      j--;
+    }
+  }
+  return i;
+}
+
+function quickSort(items, left, right) {
+  var index;
+  if (items.length > 1) {
+    left = typeof left != "number" ? 0 : left;
+    right = typeof right != "number" ? items.length - 1 : right;
+    index = partition(items, left, right);
+    if (left < index - 1) {
+      quickSort(items, left, index - 1);
+    }
+    if (index < right) {
+      quickSort(items, index, right);
+    }
+  }
+  return items;
+}
+// first call
+var result = quickSort(items);
+`}</CodeBlock>
+      </Block>
+      <Block>
+        <SubHead>Другие виды сортировок:</SubHead>
+        <p>
+          Блочная сортировка<br />
+          Сортировка подсчетом<br />
+          Сортировка расческой<br />
+          Сортировка Шелла<br />
+          Пирамидальная сортировка<br />
+          Сортировка перемешиванием<br />
+          Гномья сортировка<br />
+          Еслественная сортировка строк<br /><br />
+          <a href="https://medium.com/@alivander" target="_blank" rel="noopener noreferrer">ссылка 1</a><br />
+          <a href="http://mathhelpplanet.com/static.php?p=javascript-algoritmy-sortirovki" target="_blank" rel="noopener noreferrer">ссылка 2</a><br />
+          <a href="https://habr.com/ru/post/335920/" target="_blank" rel="noopener noreferrer">ссылка 3</a><br /><br />
+          <a href="https://ru.hexlet.io/courses/js-algorithms/lessons/graphs/theory_unit" target="_blank" rel="noopener noreferrer">Графы, алгоритм Дейкстры</a>      
         </p>
       </Block>
     </>
