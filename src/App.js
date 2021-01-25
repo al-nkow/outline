@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename={'outline'}>
         <div>
           <NavBar />
           <AppRouter />
