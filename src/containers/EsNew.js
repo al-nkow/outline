@@ -446,7 +446,6 @@ class Cmpnt extends PureComponent {
             {code21}
           </StyledSyntaxHighlighter>
         </Block>
-
       </Fragment>
     );
   }
