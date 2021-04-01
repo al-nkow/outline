@@ -27,6 +27,11 @@ class GitPage extends PureComponent {
           2. Удалить его:<br/>
           <Code className="mr">git rm --cached folder/fileName.js</Code><br/>
         </p>
+        <p>
+          Как удалить ветку Git и локально, и удаленно?<br />
+          <Code className="mr">git branch -D branchName</Code><br/>
+          <Code className="mr">git push origin --delete branchName</Code>
+        </p>
       </div>
     );
   }
