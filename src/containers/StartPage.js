@@ -76,7 +76,8 @@ class StartPage extends PureComponent {
         <Divider/>
 
         <StyledLink to="/helper">Вопросы на собеседовании по всем разделам</StyledLink>
-        <StyledLink to="/tasks">Задачи на собеседовании</StyledLink>
+        <StyledLink to="/tasks">Задачи на собеседовании 1</StyledLink>
+        <StyledLink to="/interview-tasks">Задачи на собеседовании 2</StyledLink>
 
         <Divider/>
 

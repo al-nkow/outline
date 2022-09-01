@@ -38,6 +38,7 @@ import WebworkersPage from './WebworkersPage';
 import ReactNativePage from './ReactNativePage';
 import StuffPage from './Stuff';
 import Algorithms from './Algorithms';
+import InterviewTasks from './InterviewTasks';
 
 const Wrap = styled.div`
   padding-top: 60px;
@@ -97,6 +98,7 @@ const AppRouter = () => (
       <Route path="/react-native" component={ReactNativePage}/>
       <Route path="/stuff" component={StuffPage}/>
       <Route path="/data" component={Algorithms}/>
+      <Route path="/interview-tasks" component={InterviewTasks}/>
     </Container>
   </Wrap>
 );
